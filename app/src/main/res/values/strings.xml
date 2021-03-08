@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SofaScoreHW</string>
+    <string name="button_name_default">CHANGE</string>
+    <string name="button_name_odd">ODD</string>
+    <string name="button_name_even">EVEN</string>
+    <string name="textview_change_even"> is even</string>
+    <string name="textview_change_odd"> is odd</string>
 </resources>
