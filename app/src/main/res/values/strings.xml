@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">SofaScoreHW</string>
-    <string name="button_name_default">CHANGE</string>
-    <string name="button_name_odd">ODD</string>
-    <string name="button_name_even">EVEN</string>
-    <string name="textview_change_even"> is even</string>
-    <string name="textview_change_odd"> is odd</string>
+    <string name="button_add">Add</string>
+    <string name="button_list">List</string>
+    <string name="fragment_album">Album name: </string>
+    <string name="fragment_band">Band name: </string>
+    <string name="fragment_genre">Genre: </string>
+    <string name="fragment_single">Single: </string>
+    <string name="fragment_count">Song count: </string>
 </resources>
