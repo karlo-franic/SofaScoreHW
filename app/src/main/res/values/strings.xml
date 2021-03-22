@@ -7,6 +7,9 @@
     <string name="fragment_genre">Genre: </string>
     <string name="fragment_single">Single: </string>
     <string name="fragment_count">Song count: </string>
+    <string name="fragment_type">Type: </string>
+    <string name="radio_ep">EP </string>
+    <string name="radio_lp">LP </string>
     <string name="title_activity_main2">MainActivity</string>
     <string name="title_add">Add</string>
     <string name="title_albums">Albums</string>
