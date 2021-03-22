@@ -1,4 +1,4 @@
-package com.example.sofascorehw.view
+package com.example.sofascorehw.ui.add
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,20 +11,21 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.sofascorehw.R
 import com.example.sofascorehw.model.Album
 import com.example.sofascorehw.utilities.InjectorUtils
-import com.example.sofascorehw.viewmodel.AlbumsViewModel
-
 
 class AddFragment : Fragment() {
 
+    private lateinit var addViewModel: AddViewModel
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         val view: View = inflater.inflate(R.layout.fragment_add, container, false)
 
-        val factory = InjectorUtils.provideAlbumsViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
-            .get(AlbumsViewModel::class.java)
+        val factory = InjectorUtils.provideAddViewModelFactory()
+        addViewModel = ViewModelProviders.of(this, factory)
+            .get(AddViewModel::class.java)
 
         val button_add_album: Button = view.findViewById(R.id.button_add_album)
 
@@ -42,7 +43,7 @@ class AddFragment : Fragment() {
                 editText_single.text.toString(),
                 editText_count.text.toString()
             )
-            viewModel.addAlbum(album)
+            addViewModel.addAlbum(album)
             editText_album.setText("")
             editText_band.setText("")
             editText_genre.setText("")
@@ -52,6 +53,4 @@ class AddFragment : Fragment() {
 
         return view
     }
-
-
 }

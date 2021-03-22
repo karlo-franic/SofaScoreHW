@@ -3,14 +3,14 @@ package com.example.sofascorehw.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.sofascorehw.model.AlbumRepository
-import com.example.sofascorehw.ui.albums.AlbumsViewModel
+import com.example.sofascorehw.ui.add.AddViewModel
 
-class AlbumsViewModelFactory(private val albumRepository: AlbumRepository) :
+class AddViewModelFactory(private val albumRepository: AlbumRepository) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
-        return AlbumsViewModel(albumRepository) as T
+        return AddViewModel(albumRepository) as T
     }
 }
