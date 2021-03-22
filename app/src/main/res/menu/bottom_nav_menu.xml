@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_add"
-        android:icon="@drawable/ic_add_black_24dp"
+        android:icon="@drawable/ic_baseline_add_24"
         android:title="@string/title_add" />
 
     <item
         android:id="@+id/navigation_albums"
-        android:icon="@drawable/ic_albums_black_24dp"
+        android:icon="@drawable/ic_baseline_collections_24"
         android:title="@string/title_albums" />
 
 </menu>

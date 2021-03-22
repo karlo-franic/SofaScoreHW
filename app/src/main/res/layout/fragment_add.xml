@@ -13,6 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/fragment_album"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +32,7 @@
         android:layout_marginStart="20dp"
         android:gravity="bottom"
         android:text="@string/fragment_band"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_album" />
 
@@ -49,6 +51,7 @@
         android:layout_marginStart="20dp"
         android:gravity="bottom"
         android:text="@string/fragment_genre"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_band" />
 
@@ -67,6 +70,7 @@
         android:layout_marginStart="20dp"
         android:gravity="bottom"
         android:text="@string/fragment_single"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_genre" />
 
@@ -85,6 +89,7 @@
         android:layout_marginStart="20dp"
         android:gravity="bottom"
         android:text="@string/fragment_count"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_single" />
 
@@ -102,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="@string/button_add"
+        android:fontFamily="@font/synemono_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_count" />
 
