@@ -9,13 +9,14 @@
 
     <TextView
         android:id="@+id/textView_albums"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
         android:fontFamily="@font/synemono_regular"
+        android:scrollbars="vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"
         tools:text="" />
 </androidx.constraintlayout.widget.ConstraintLayout>

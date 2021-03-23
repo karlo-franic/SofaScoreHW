@@ -7,10 +7,11 @@ class Album(
     val band: String,
     val song_count: String,
     val single: String,
-    val genre: Genre
+    val genre: Genre,
+    val radio_btn: String
 ) {
 
     override fun toString(): String {
-        return "$band : $name ($genre) - $single, $song_count"
+        return "$band : $name ($genre) - $single, $song_count /$radio_btn/"
     }
 }

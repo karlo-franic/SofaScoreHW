@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.sofascorehw.R
+import com.example.sofascorehw.databinding.FragmentAlbumsBinding
 import com.example.sofascorehw.utilities.InjectorUtils
 
 class AlbumsFragment : Fragment() {
 
     private lateinit var albumsViewModel: AlbumsViewModel
+    private lateinit var binding: FragmentAlbumsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,8 +24,7 @@ class AlbumsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_albums, container, false)
-
-        val textView_albums: TextView = view.findViewById(R.id.textView_albums)
+        binding = FragmentAlbumsBinding.bind(view)
 
         val factory = InjectorUtils.provideAlbumsViewModelFactory()
         albumsViewModel = ViewModelProviders.of(this, factory)
@@ -34,7 +35,7 @@ class AlbumsFragment : Fragment() {
             albums.forEach { album ->
                 stringBuilder.append("$album\n\n")
             }
-            textView_albums.text = stringBuilder.toString()
+            binding.textViewAlbums.text = stringBuilder.toString()
         })
 
         return view
