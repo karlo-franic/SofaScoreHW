@@ -79,13 +79,25 @@ class AddFragment : Fragment() {
             val album = Album(
                 binding.editTextAlbum.text.toString(),
                 binding.editTextBand.text.toString(),
-                binding.editTextSingle.text.toString(),
                 binding.editTextCount.text.toString(),
+                binding.editTextSingle.text.toString(),
+                binding.editTextYear.text.toString(),
+                binding.editTextCountry.text.toString(),
+                binding.editTextCity.text.toString(),
+                binding.editTextSold.text.toString(),
                 enum_Genre,
                 radio_Type
             )
 
-            if (binding.editTextAlbum.length()==0 || binding.editTextBand.length()==0 || binding.editTextSingle.length()==0 || binding.editTextCount.length()==0 || radio_Type=="") {
+            if (binding.editTextAlbum.length()==0 ||
+                binding.editTextBand.length()==0 ||
+                binding.editTextSingle.length()==0 ||
+                binding.editTextCount.length()==0 ||
+                binding.editTextYear.length()==0 ||
+                binding.editTextCountry.length()==0 ||
+                binding.editTextCity.length()==0 ||
+                binding.editTextSold.length()==0 ||
+                radio_Type=="") {
                 Toast.makeText(view.context, "You haven't filled all the fields.", Toast.LENGTH_LONG).show()
             } else {
                 addViewModel.addAlbum(album)
@@ -93,6 +105,10 @@ class AddFragment : Fragment() {
                 binding.editTextBand.setText("")
                 binding.editTextSingle.setText("")
                 binding.editTextCount.setText("")
+                binding.editTextYear.setText("")
+                binding.editTextCountry.setText("")
+                binding.editTextCity.setText("")
+                binding.editTextSold.setText("")
                 binding.radioResult.clearCheck()
             }
         }

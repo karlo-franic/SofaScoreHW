@@ -1,161 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/backgound_color"
-    tools:context=".ui.add.AddFragment">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/fragment_album"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_album"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/synemono_regular"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_album" />
-
-    <TextView
-        android:id="@+id/textView_band"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:gravity="bottom"
-        android:text="@string/fragment_band"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_album" />
-
-    <EditText
-        android:id="@+id/editText_band"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/synemono_regular"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_band" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/backgound_color"
+        tools:context=".ui.add.AddFragment">
 
 
-    <TextView
-        android:id="@+id/textView_single"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:gravity="bottom"
-        android:text="@string/fragment_single"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_band" />
-
-    <EditText
-        android:id="@+id/editText_single"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/synemono_regular"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_single" />
-
-    <TextView
-        android:id="@+id/textView_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:gravity="bottom"
-        android:text="@string/fragment_count"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_single" />
-
-    <EditText
-        android:id="@+id/editText_count"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/synemono_regular"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_count" />
-
-    <TextView
-        android:id="@+id/textView_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:gravity="bottom"
-        android:text="@string/fragment_genre"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_count" />
-
-    <Spinner
-        android:id="@+id/spinner_genre"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/synemono_regular"
-        android:layout_marginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_spinner" />
-
-    <TextView
-        android:id="@+id/textView_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="20dp"
-        android:gravity="bottom"
-        android:text="@string/fragment_type"
-        android:fontFamily="@font/synemono_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_genre" />
-
-    <RadioGroup
-        android:id="@+id/radio_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_type">
-
-        <RadioButton
-            android:id="@+id/radio_btn_ep"
+        <TextView
+            android:id="@+id/textView_album"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/fragment_album"
             android:fontFamily="@font/synemono_regular"
-            android:text="@string/radio_ep" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radio_btn_lp"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editText_album"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/synemono_regular"
-            android:text="@string/radio_lp" />
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_album" />
 
-    </RadioGroup>
+        <TextView
+            android:id="@+id/textView_band"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_band"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_album" />
+
+        <EditText
+            android:id="@+id/editText_band"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_band" />
 
 
-    <Button
-        android:id="@+id/button_add_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="30dp"
-        android:fontFamily="@font/synemono_regular"
-        android:text="@string/button_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView_single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_single"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_band" />
+
+        <EditText
+            android:id="@+id/editText_single"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_single" />
+
+        <TextView
+            android:id="@+id/textView_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_count"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_single" />
+
+        <EditText
+            android:id="@+id/editText_count"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_count" />
+
+        <TextView
+            android:id="@+id/textView_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_year"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_count" />
+
+        <EditText
+            android:id="@+id/editText_year"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_year" />
+
+        <TextView
+            android:id="@+id/textView_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_country"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_year" />
+
+        <EditText
+            android:id="@+id/editText_country"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_country" />
+
+        <TextView
+            android:id="@+id/textView_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_city"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_country" />
+
+        <EditText
+            android:id="@+id/editText_city"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_city" />
+
+        <TextView
+            android:id="@+id/textView_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_sold"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_city" />
+
+        <EditText
+            android:id="@+id/editText_sold"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_sold" />
+
+        <TextView
+            android:id="@+id/textView_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_genre"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_sold" />
+
+        <Spinner
+            android:id="@+id/spinner_genre"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/synemono_regular"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_spinner" />
+
+        <TextView
+            android:id="@+id/textView_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="@string/fragment_type"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_genre" />
+
+        <RadioGroup
+            android:id="@+id/radio_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_type">
+
+            <RadioButton
+                android:id="@+id/radio_btn_ep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/synemono_regular"
+                android:text="@string/radio_ep" />
+
+            <RadioButton
+                android:id="@+id/radio_btn_lp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/synemono_regular"
+                android:text="@string/radio_lp" />
+
+        </RadioGroup>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button_add_album"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/synemono_regular"
+            android:text="@string/button_add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_result" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

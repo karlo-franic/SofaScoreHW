@@ -10,6 +10,10 @@
     <string name="fragment_type">Type: </string>
     <string name="radio_ep">EP </string>
     <string name="radio_lp">LP </string>
+    <string name="fragment_country">Country: </string>
+    <string name="fragment_city">City: </string>
+    <string name="fragment_sold">Copies Sold: </string>
+    <string name="fragment_year">Year: </string>
     <string name="title_activity_main2">MainActivity</string>
     <string name="title_add">Add</string>
     <string name="title_albums">Albums</string>
