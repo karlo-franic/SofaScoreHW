@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/fragment_album"
             android:fontFamily="@font/synemono_regular"
+            android:text="@string/fragment_album"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,8 +28,8 @@
             android:id="@+id/editText_album"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_album" />
 
@@ -38,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_band"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_album" />
 
@@ -48,8 +48,8 @@
             android:id="@+id/editText_band"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_band" />
 
@@ -59,9 +59,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_single"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_band" />
 
@@ -69,8 +69,8 @@
             android:id="@+id/editText_single"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_single" />
 
@@ -79,9 +79,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_count"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_single" />
 
@@ -89,8 +89,8 @@
             android:id="@+id/editText_count"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_count" />
 
@@ -99,9 +99,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_year"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_count" />
 
@@ -109,8 +109,8 @@
             android:id="@+id/editText_year"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_year" />
 
@@ -119,9 +119,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_country"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_year" />
 
@@ -129,8 +129,8 @@
             android:id="@+id/editText_country"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_country" />
 
@@ -139,9 +139,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_city"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_country" />
 
@@ -149,8 +149,8 @@
             android:id="@+id/editText_city"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_city" />
 
@@ -159,9 +159,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_sold"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_city" />
 
@@ -169,8 +169,8 @@
             android:id="@+id/editText_sold"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_sold" />
 
@@ -179,9 +179,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_genre"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_sold" />
 
@@ -189,8 +189,8 @@
             android:id="@+id/spinner_genre"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/synemono_regular"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_spinner" />
 
@@ -198,11 +198,11 @@
             android:id="@+id/textView_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/synemono_regular"
             android:gravity="bottom"
             android:text="@string/fragment_type"
-            android:fontFamily="@font/synemono_regular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_genre" />
 

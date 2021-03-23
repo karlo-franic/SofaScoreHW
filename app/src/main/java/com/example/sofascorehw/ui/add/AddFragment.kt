@@ -41,21 +41,23 @@ class AddFragment : Fragment() {
             Genre.ETNO.toString()
         )
 
-        binding.spinnerGenre.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genre_value)
+        binding.spinnerGenre.adapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genre_value)
 
-        var enum_Result : String = ""
+        var enum_Result: String = ""
 
         binding.spinnerGenre.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long
+            override fun onItemSelected(
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
                 enum_Result = genre_value.get(position)
             }
         }
-        var enum_Genre : Genre = Genre.ROCK
+        var enum_Genre: Genre = Genre.ROCK
 
-        var radio_Type : String = ""
+        var radio_Type: String = ""
 
         binding.radioResult.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.radio_btn_ep)
@@ -89,16 +91,21 @@ class AddFragment : Fragment() {
                 radio_Type
             )
 
-            if (binding.editTextAlbum.length()==0 ||
-                binding.editTextBand.length()==0 ||
-                binding.editTextSingle.length()==0 ||
-                binding.editTextCount.length()==0 ||
-                binding.editTextYear.length()==0 ||
-                binding.editTextCountry.length()==0 ||
-                binding.editTextCity.length()==0 ||
-                binding.editTextSold.length()==0 ||
-                radio_Type=="") {
-                Toast.makeText(view.context, "You haven't filled all the fields.", Toast.LENGTH_LONG).show()
+            if (binding.editTextAlbum.length() == 0 ||
+                binding.editTextBand.length() == 0 ||
+                binding.editTextSingle.length() == 0 ||
+                binding.editTextCount.length() == 0 ||
+                binding.editTextYear.length() == 0 ||
+                binding.editTextCountry.length() == 0 ||
+                binding.editTextCity.length() == 0 ||
+                binding.editTextSold.length() == 0 ||
+                radio_Type == ""
+            ) {
+                Toast.makeText(
+                    view.context,
+                    "You haven't filled all the fields.",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
                 addViewModel.addAlbum(album)
                 binding.editTextAlbum.setText("")

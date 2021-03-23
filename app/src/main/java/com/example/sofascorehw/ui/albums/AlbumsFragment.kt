@@ -33,28 +33,16 @@ class AlbumsFragment : Fragment() {
         val factory = InjectorUtils.provideAlbumsViewModelFactory()
         albumsViewModel = ViewModelProviders.of(this, factory)
             .get(AlbumsViewModel::class.java)
-/*
-        albumsViewModel.getAlbums().observe(this, Observer { albums ->
-            val stringBuilder = StringBuilder()
-            albums.forEach { album ->
-                stringBuilder.append("$album\n\n")
-            }
-            binding.textViewAlbums.text = stringBuilder.toString()
-        })
-*/
 
         val all_Albums = mutableListOf<String>()
-
-
 
         albumsViewModel.getAlbums().observe(this, Observer { albums ->
             albums.forEach { album ->
                 all_Albums += album.toString()
             }
-
         })
-
-        binding.albumList.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, all_Albums)
+        binding.albumList.adapter =
+            ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, all_Albums)
 
         return view
     }
