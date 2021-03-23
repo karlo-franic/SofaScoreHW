@@ -84,12 +84,17 @@ class AddFragment : Fragment() {
                 enum_Genre,
                 radio_Type
             )
-            addViewModel.addAlbum(album)
-            binding.editTextAlbum.setText("")
-            binding.editTextBand.setText("")
-            binding.editTextSingle.setText("")
-            binding.editTextCount.setText("")
-            binding.radioResult.clearCheck()
+
+            if (binding.editTextAlbum.length()==0 || binding.editTextBand.length()==0 || binding.editTextSingle.length()==0 || binding.editTextCount.length()==0 || radio_Type=="") {
+                Toast.makeText(view.context, "You haven't filled all the fields.", Toast.LENGTH_LONG).show()
+            } else {
+                addViewModel.addAlbum(album)
+                binding.editTextAlbum.setText("")
+                binding.editTextBand.setText("")
+                binding.editTextSingle.setText("")
+                binding.editTextCount.setText("")
+                binding.radioResult.clearCheck()
+            }
         }
 
         return view
