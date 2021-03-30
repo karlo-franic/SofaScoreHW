@@ -2,12 +2,9 @@ package com.example.sofascorehw
 
 import android.app.Activity
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import com.example.sofascorehw.databinding.ActivityAlbumBinding
@@ -21,13 +18,13 @@ import java.util.*
 class AlbumActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumBinding
-    lateinit var context : Context
+    lateinit var context: Context
     lateinit var myPreference: MyPreference
-  //  lateinit var resources : Resources
+    //  lateinit var resources : Resources
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-     //   loadLocate() // call LoadLocate
+        //   loadLocate() // call LoadLocate
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -108,7 +105,7 @@ class AlbumActivity : AppCompatActivity() {
     override fun attachBaseContext(newBase: Context?) {
         myPreference = MyPreference(newBase!!)
         val lang = myPreference.getLoginCount()
-        super.attachBaseContext(MyContextWrapper.wrap(newBase,lang))
+        super.attachBaseContext(MyContextWrapper.wrap(newBase, lang))
     }
 
 /*

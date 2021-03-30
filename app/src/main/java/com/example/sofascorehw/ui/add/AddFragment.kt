@@ -8,10 +8,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
-import com.example.sofascorehw.AlbumActivity
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.FragmentAddBinding
-import com.example.sofascorehw.databinding.FragmentAlbumsBinding
 import com.example.sofascorehw.language.MyPreference
 import com.example.sofascorehw.model.Album
 import com.example.sofascorehw.model.Genre
@@ -137,14 +135,5 @@ class AddFragment : Fragment() {
 
 
         return view
-    }
-
-    fun loadSettings() {
-        val albumActivity : AlbumActivity = AlbumActivity()
-        val sp = PreferenceManager.getDefaultSharedPreferences(context)
-
-        val lang = sp.getString("lang", "en")
-
-        albumActivity.loadLocate()
     }
 }
