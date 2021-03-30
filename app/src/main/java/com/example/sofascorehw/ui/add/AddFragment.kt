@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
+import com.example.sofascorehw.AlbumActivity
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.FragmentAddBinding
 import com.example.sofascorehw.databinding.FragmentAlbumsBinding
+import com.example.sofascorehw.language.MyPreference
 import com.example.sofascorehw.model.Album
 import com.example.sofascorehw.model.Genre
 import com.example.sofascorehw.utilities.InjectorUtils
@@ -18,6 +21,7 @@ class AddFragment : Fragment() {
 
     private lateinit var addViewModel: AddViewModel
     private lateinit var binding: FragmentAddBinding
+    lateinit var myPreference: MyPreference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +31,14 @@ class AddFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_add, container, false)
         binding = FragmentAddBinding.bind(view)
 
+        //Language
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+        val defaultLangAction = sp.getString("lang", "")
+/*
+        if (defaultLangAction != null) {
+            myPreference.setLoginCount(defaultLangAction)
+        }
+*/
         val factory = InjectorUtils.provideAddViewModelFactory()
         addViewModel = ViewModelProviders.of(this, factory)
             .get(AddViewModel::class.java)
@@ -88,7 +100,8 @@ class AddFragment : Fragment() {
                 binding.editTextCity.text.toString(),
                 binding.editTextSold.text.toString(),
                 enum_Genre,
-                radio_Type
+                radio_Type,
+                binding.editTextImg.text.toString()
             )
 
             if (binding.editTextAlbum.length() == 0 ||
@@ -99,6 +112,7 @@ class AddFragment : Fragment() {
                 binding.editTextCountry.length() == 0 ||
                 binding.editTextCity.length() == 0 ||
                 binding.editTextSold.length() == 0 ||
+                binding.editTextImg.length() == 0 ||
                 radio_Type == ""
             ) {
                 Toast.makeText(
@@ -116,10 +130,21 @@ class AddFragment : Fragment() {
                 binding.editTextCountry.setText("")
                 binding.editTextCity.setText("")
                 binding.editTextSold.setText("")
+                binding.editTextImg.setText("")
                 binding.radioResult.clearCheck()
             }
         }
 
+
         return view
+    }
+
+    fun loadSettings() {
+        val albumActivity : AlbumActivity = AlbumActivity()
+        val sp = PreferenceManager.getDefaultSharedPreferences(context)
+
+        val lang = sp.getString("lang", "en")
+
+        albumActivity.loadLocate()
     }
 }

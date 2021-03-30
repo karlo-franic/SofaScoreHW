@@ -3,14 +3,22 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_frame_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/backgound_color"
+        android:paddingTop="30dp"
+        android:paddingStart="100dp"
+        android:paddingEnd="100dp"
+        android:paddingBottom="30dp"
         tools:context=".ui.add.AddFragment">
+
+
 
 
         <TextView
@@ -175,6 +183,26 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_sold" />
 
         <TextView
+            android:id="@+id/textView_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
+            android:gravity="bottom"
+            android:text="@string/fragment_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_sold" />
+
+        <EditText
+            android:id="@+id/editText_img"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/synemono_regular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_img" />
+
+        <TextView
             android:id="@+id/textView_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -183,7 +211,7 @@
             android:gravity="bottom"
             android:text="@string/fragment_genre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_sold" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_img" />
 
         <Spinner
             android:id="@+id/spinner_genre"
@@ -240,6 +268,7 @@
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/synemono_regular"
             android:text="@string/button_add"
+            style="@style/button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radio_result" />
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SofaScoreHW</string>
+    <string name="button_add">Dodaj</string>
+    <string name="button_list">Lista</string>
+    <string name="fragment_album">Ime albuma: </string>
+    <string name="fragment_band">Ime benda: </string>
+    <string name="fragment_genre">Žanr: </string>
+    <string name="fragment_single">Single: </string>
+    <string name="fragment_count">Broj pjesama: </string>
+    <string name="fragment_type">Tip: </string>
+    <string name="radio_ep">EP </string>
+    <string name="radio_lp">LP </string>
+    <string name="fragment_country">Država: </string>
+    <string name="fragment_city">Grad: </string>
+    <string name="fragment_sold">Prodano primjeraka: </string>
+    <string name="fragment_img">URL Slike: </string>
+    <string name="fragment_year">Godina: </string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_add">Dodaj</string>
+    <string name="title_albums">Albumi</string>
+    <string name="title_activity_album">AlbumActivity</string>
+    <string name="settings">Postavke</string>
+    <string name="page_title">SofaScoreHW</string>
+    <!-- Preference Titles -->
+    <string name="languages_header">Jezik</string>
+    <string name="sync_header">Sinkronizacija</string>
+
+    <!-- Languages Preferences -->
+    <string name="signature_title">Tvoj potpis</string>
+    <string name="reply_title">Jezik</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sinkroniziraj email periodično</string>
+    <string name="attachment_title">Skini dolazeće privitke</string>
+    <string name="attachment_summary_on">Automatski skini privitke za dolazeće emailove</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+</resources>

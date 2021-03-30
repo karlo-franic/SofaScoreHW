@@ -13,9 +13,26 @@
     <string name="fragment_country">Country: </string>
     <string name="fragment_city">City: </string>
     <string name="fragment_sold">Copies Sold: </string>
+    <string name="fragment_img">Image URL: </string>
     <string name="fragment_year">Year: </string>
     <string name="title_activity_main2">MainActivity</string>
     <string name="title_add">Add</string>
     <string name="title_albums">Albums</string>
     <string name="title_activity_album">AlbumActivity</string>
+    <string name="settings">Settings</string>
+    <string name="page_title">SofaScoreHW</string>
+    <!-- Preference Titles -->
+    <string name="languages_header">Language</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Languages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Language</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

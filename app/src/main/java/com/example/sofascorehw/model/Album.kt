@@ -10,7 +10,8 @@ class Album(
     val city: String,
     val sold: String,
     val genre: Genre,
-    val radio_btn: String
+    val radio_btn: String,
+    val img: String
 ) {
 
     override fun toString(): String {
