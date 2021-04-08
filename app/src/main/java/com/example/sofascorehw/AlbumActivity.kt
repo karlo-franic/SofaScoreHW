@@ -12,6 +12,7 @@ import com.example.sofascorehw.language.MyContextWrapper
 import com.example.sofascorehw.language.MyPreference
 import com.example.sofascorehw.ui.add.AddFragment
 import com.example.sofascorehw.ui.albums.AlbumsFragment
+import com.example.sofascorehw.ui.search.WeathersFragment
 import com.example.sofascorehw.ui.settings.SettingsFragment
 import java.util.*
 
@@ -31,6 +32,7 @@ class AlbumActivity : AppCompatActivity() {
         val addFragment = AddFragment()
         val albumsFragment = AlbumsFragment()
         val settingsFragment = SettingsFragment()
+        val searchFragment = WeathersFragment()
 
         //Language
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -41,15 +43,15 @@ class AlbumActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.nav_host_fragment, addFragment)
+            replace(R.id.nav_host_fragment, searchFragment)
             commit()
         }
 
         binding.navView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_add -> {
+                R.id.navigation_search -> {
                     supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.nav_host_fragment, addFragment)
+                        replace(R.id.nav_host_fragment, searchFragment)
                         commit()
                     }
                 }

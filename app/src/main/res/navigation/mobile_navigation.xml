@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_weather">
 
     <fragment
-        android:id="@+id/navigation_add"
-        android:name="com.example.sofascorehw.ui.add.AddFragment"
+        android:id="@+id/navigation_weather"
+        android:name="com.example.sofascorehw.ui.search.WeathersFragment"
         android:label="@string/title_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_search" />
 
 
     <fragment

@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.SofaScoreHW" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/Tan</item>
-        <item name="colorPrimaryVariant">@color/Tan</item>
+        <item name="colorPrimary">@color/tint_primary</item>
+        <item name="colorPrimaryVariant">@color/tint_primary</item>
         <item name="colorOnPrimary">@color/Tan</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
