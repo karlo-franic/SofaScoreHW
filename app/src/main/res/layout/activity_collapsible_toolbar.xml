@@ -22,16 +22,28 @@
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:title="">
 
+<!--
             <ImageView
                 android:id="@+id/large_img"
                 android:layout_width="320dp"
                 android:layout_height="200dp"
                 android:layout_gravity="top|center"
                 android:layout_marginTop="40dp"
-                android:elevation="3dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/coffeeresized"
                 app:layout_collapseMode="parallax" />
+-->
+
+            <TextView
+                android:id="@+id/city_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="100dp"
+                android:gravity="bottom"
+                style="@style/Headline1DarkLeft"
+                android:elevation="3dp"
+                android:textSize="30dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -175,53 +187,6 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_year" />
-
-
-            <TextView
-                android:id="@+id/textView_city"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/synemono_regular"
-                android:gravity="bottom"
-                android:text="@string/fragment_city"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_year" />
-
-            <TextView
-                android:id="@+id/editText_city"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/synemono_regular"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_city" />
-
-            <TextView
-                android:id="@+id/textView_sold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/synemono_regular"
-                android:gravity="bottom"
-                android:text="@string/fragment_sold"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_city" />
-
-            <TextView
-                android:id="@+id/editText_sold"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/synemono_regular"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_sold" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

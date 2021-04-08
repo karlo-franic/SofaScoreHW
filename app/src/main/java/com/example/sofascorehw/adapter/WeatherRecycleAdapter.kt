@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sofascorehw.OnAlbumClickListener
+import com.example.sofascorehw.OnCityClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
 import com.example.sofascorehw.networking.model.WeathersResponse
@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso
 class WeatherRecycleAdapter(
     val context: Context,
     val weatherList: ArrayList<WeathersResponse>,
-    val onAlbumClickListener: OnAlbumClickListener?
+    val onCityClickListener: OnCityClickListener?
 ) : RecyclerView.Adapter<WeatherRecycleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherRecycleAdapter.ViewHolder {
@@ -48,8 +48,8 @@ class WeatherRecycleAdapter(
 */
 
         holder.itemView.setOnClickListener {
-            if (onAlbumClickListener != null) {
-                onAlbumClickListener.onAlbumItemClicked(position)
+            if (onCityClickListener != null) {
+                onCityClickListener.onCityItemClicked(position)
             }
         }
     }

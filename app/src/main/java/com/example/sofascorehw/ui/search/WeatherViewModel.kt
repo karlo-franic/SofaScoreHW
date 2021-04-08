@@ -1,12 +1,10 @@
 package com.example.sofascorehw.ui.search
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sofascorehw.model.Album
-import com.example.sofascorehw.model.AlbumRepository
 import com.example.sofascorehw.networking.Network
+import com.example.sofascorehw.networking.model.NewWeathersResponse
 import com.example.sofascorehw.networking.model.SpecificWeatherResponse
 import com.example.sofascorehw.networking.model.WeathersResponse
 import kotlinx.coroutines.launch
@@ -44,6 +42,20 @@ class WeatherViewModel : ViewModel() {
             weatherList.value = weathersResponse as ArrayList<WeathersResponse>
         }
     }
+
+    fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
+        return weatherList
+    }
+
+/*
+    fun getSearchedWeathers(s: String) {
+        viewModelScope.launch {
+            val weathersResponse = Network().getService().getSearchedWeathers()
+            weatherList.value = weathersResponse as ArrayList<WeathersResponse>
+        }
+    }
+
+ */
 
     /*
     fun getSpecificWeather(id: Int) {

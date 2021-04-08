@@ -22,6 +22,7 @@
     <string name="title_activity_album">AlbumActivity</string>
     <string name="settings">Postavke</string>
     <string name="page_title">SofaScoreHW</string>
+    <string name="title_search">Pretraži</string>
     <!-- Preference Titles -->
     <string name="languages_header">Jezik</string>
     <string name="sync_header">Sinkronizacija</string>

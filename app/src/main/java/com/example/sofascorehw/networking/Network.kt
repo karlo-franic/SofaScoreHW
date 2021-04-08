@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Network {
     private val service: MetaWeatherService
-    private val baseUrl = "https://www.metaweather.com/"
+    private val baseUrl = "https://www.metaweather.com"
 
     init {
         val httpClient = OkHttpClient.Builder()

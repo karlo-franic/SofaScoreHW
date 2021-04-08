@@ -21,23 +21,14 @@ class CollapsibleToolbarActivity : AppCompatActivity() {
 
         coordinatorLayout = binding.coordinatorLayout
 
+        binding.cityTitle.text = intent.getStringExtra("title")
+        /*
         binding.editTextAlbum.text = intent.getStringExtra("name")
         binding.editTextBand.text = intent.getStringExtra("band")
         binding.editTextSingle.text = intent.getStringExtra("single")
-        binding.editTextCity.text = intent.getStringExtra("city")
         binding.editTextYear.text = intent.getStringExtra("year")
         binding.editTextCount.text = intent.getStringExtra("song_count")
-        binding.editTextSold.text = intent.getStringExtra("sold")
-
-        var urlImg: String? = intent.getStringExtra("img")
-
-        Picasso.get().load(urlImg)
-            .placeholder(com.example.sofascorehw.R.drawable.coffeeresized)
-            .error(com.example.sofascorehw.R.drawable.coffeeresized)
-            .into(binding.largeImg)
-
-        var x: Int = 1
-
+*/
         binding.floatingBtn.setOnClickListener {
             val snackbar =
                 Snackbar.make(coordinatorLayout, "Added to favorite!", Snackbar.LENGTH_LONG)

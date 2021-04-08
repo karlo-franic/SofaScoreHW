@@ -65,6 +65,7 @@ class AlbumActivity : AppCompatActivity() {
             true
         }
 
+        /*
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.settings -> {
@@ -77,6 +78,8 @@ class AlbumActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        */
+
     }
 
     private fun setLocate(Lang: String) {
