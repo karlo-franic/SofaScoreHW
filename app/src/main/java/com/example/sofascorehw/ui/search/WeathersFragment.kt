@@ -31,11 +31,7 @@ class WeathersFragment : Fragment(), OnCityClickListener {
         val view: View = inflater.inflate(R.layout.fragment_search, container, false)
         binding = FragmentSearchBinding.bind(view)
         val root = binding.root
-/*
-        val factory = InjectorUtils.provideAlbumsViewModelFactory()
-        weatherViewModel = ViewModelProviders.of(this, factory)
-            .get(WeatherViewModel::class.java)
-*/
+
         binding.albumList.layoutManager = LinearLayoutManager(context)
         weatherViewModel.weatherList.observe(viewLifecycleOwner, Observer {
             val adapter = WeatherRecycleAdapter(requireContext(), it, this)
@@ -60,27 +56,7 @@ class WeathersFragment : Fragment(), OnCityClickListener {
      //   weatherViewModel.getSearchedWeathers("san")
     //    weatherViewModel.getSpecificWeather(851128)
      //   weatherViewModel.getSearchedWeathers()
-/*
-        val all_Albums = mutableListOf<String>()
 
-        val recyc_titles = mutableListOf<String>()
-        val recyc_band = mutableListOf<String>()
-        val recyc_img = mutableListOf<String>()
-
-        weatherViewModel.getAlbums().observe(this, Observer { albums ->
-            albums.forEach { album ->
-                all_Albums += album.toString()
-
-                recyc_titles += album.name
-                recyc_band += album.band
-                recyc_img += album.img
-            }
-        })
-
-        binding.albumList.layoutManager = LinearLayoutManager(context)
-        binding.albumList.adapter =
-            RecycleAdapter(recyc_titles, recyc_band, recyc_img, this)
-*/
         return root
     }
 

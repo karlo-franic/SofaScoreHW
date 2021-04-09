@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sofascorehw.OnCityClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
 import com.example.sofascorehw.networking.model.WeathersResponse
-import com.squareup.picasso.Picasso
+import com.example.sofascorehw.ui.search.WeatherViewModel
 
 class WeatherRecycleAdapter(
     val context: Context,
@@ -17,7 +19,7 @@ class WeatherRecycleAdapter(
     val onCityClickListener: OnCityClickListener?
 ) : RecyclerView.Adapter<WeatherRecycleAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherRecycleAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.weather_card_layout, parent, false)
         return ViewHolder(v)
@@ -27,7 +29,7 @@ class WeatherRecycleAdapter(
         return weatherList.size
     }
 
-    override fun onBindViewHolder(holder: WeatherRecycleAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weather = weatherList[position]
 
         holder.binding.cityTitle.text = "${weather.title}"

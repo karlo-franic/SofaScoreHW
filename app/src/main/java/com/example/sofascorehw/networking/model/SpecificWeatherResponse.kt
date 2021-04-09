@@ -8,5 +8,5 @@ data class SpecificWeatherResponse (
     val woeid: Int,
     val weather_state_name: String,
     val weather_state_abbr: String,
-    val wind_direction_compass: String
+    val the_temp: String
     ) : Serializable
