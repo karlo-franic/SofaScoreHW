@@ -14,7 +14,7 @@ import com.example.sofascorehw.networking.model.WeathersResponse as WeathersResp
 interface MetaWeatherService {
 
     @GET("/api/location/search/")
-    suspend fun getSearchedWeathers(@Query("query") search: String): WeathersResponse
+    suspend fun getSearchedWeathers(@Query("query") search: String): ArrayList<WeathersResponse>
 
     @GET("/api/location/{id}")
     suspend fun getSpecificWeather(@Path("id") id: Int): SpecificWeatherResponse

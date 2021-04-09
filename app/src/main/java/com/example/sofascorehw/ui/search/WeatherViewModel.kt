@@ -43,26 +43,17 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
+
     fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
         return weatherList
     }
 
-/*
-    fun getSearchedWeathers(s: String) {
-        viewModelScope.launch {
-            val weathersResponse = Network().getService().getSearchedWeathers()
-            weatherList.value = weathersResponse as ArrayList<WeathersResponse>
-        }
-    }
 
- */
-
-    /*
     fun getSpecificWeather(id: Int) {
         viewModelScope.launch {
             val weathersResponse = Network().getService().getSpecificWeather(id)
-            weatherOne = weathersResponse as WeathersResponse
+            weatherOne = weathersResponse as SpecificWeatherResponse
         }
     }
-     */
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -27,7 +28,7 @@ class WeathersFragment : Fragment(), OnCityClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_albums, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_search, container, false)
         binding = FragmentSearchBinding.bind(view)
         val root = binding.root
 /*
@@ -39,6 +40,21 @@ class WeathersFragment : Fragment(), OnCityClickListener {
         weatherViewModel.weatherList.observe(viewLifecycleOwner, Observer {
             val adapter = WeatherRecycleAdapter(requireContext(), it, this)
             binding.albumList.adapter = adapter
+        })
+
+        binding.searchEditText.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchEditText.clearFocus()
+                if (query != null) {
+                    weatherViewModel.getSearchedWeathers(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
         })
 
      //   weatherViewModel.getSearchedWeathers("san")
@@ -86,33 +102,5 @@ class WeathersFragment : Fragment(), OnCityClickListener {
 
         startActivity(intent)
     }
-
-    /*
-    override fun onAlbumItemClicked(position: Int) {
-
-        val all_Albums = mutableListOf<Album>()
-
-        weatherViewModel.getAlbums().observe(this, Observer { albums ->
-            albums.forEach { album ->
-                all_Albums += album
-            }
-        })
-
-        val intent = Intent(this.context, CollapsibleToolbarActivity::class.java)
-        intent.putExtra("name", all_Albums[position].name)
-        intent.putExtra("band", all_Albums[position].band)
-        intent.putExtra("single", all_Albums[position].single)
-        intent.putExtra("country", all_Albums[position].country)
-        intent.putExtra("city", all_Albums[position].city)
-        intent.putExtra("year", all_Albums[position].year)
-        intent.putExtra("song_count", all_Albums[position].song_count)
-        intent.putExtra("genre", all_Albums[position].genre)
-        intent.putExtra("sold", all_Albums[position].sold)
-        intent.putExtra("img", all_Albums[position].img)
-
-        startActivity(intent)
-    }
-*/
-
 }
 

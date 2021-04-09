@@ -4,8 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sofascorehw.OnCityClickListener
 import com.example.sofascorehw.R
@@ -21,7 +19,7 @@ class WeatherRecycleAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherRecycleAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(com.example.sofascorehw.R.layout.weather_card_layout, parent, false)
+            .inflate(R.layout.weather_card_layout, parent, false)
         return ViewHolder(v)
     }
 
@@ -57,15 +55,5 @@ class WeatherRecycleAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val binding = WeatherCardLayoutBinding.bind(itemView)
-      /*
-        var itemImage: ImageView
-        var itemTitle: TextView
-        var itemBand: TextView
-
-        init {
-            itemImage = itemView.findViewById(com.example.sofascorehw.R.id.item_image)
-            itemTitle = itemView.findViewById(com.example.sofascorehw.R.id.item_title)
-            itemBand = itemView.findViewById(com.example.sofascorehw.R.id.item_band)
-        */
     }
 }
