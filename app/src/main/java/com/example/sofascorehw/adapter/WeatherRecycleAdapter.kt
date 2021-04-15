@@ -12,6 +12,7 @@ import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
 import com.example.sofascorehw.networking.model.WeathersResponse
 import com.example.sofascorehw.ui.search.WeatherViewModel
+import java.lang.Math.abs
 
 class WeatherRecycleAdapter(
     val context: Context,
@@ -32,8 +33,40 @@ class WeatherRecycleAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weather = weatherList[position]
 
+        val parts = weather.latt_long.split(",")
+        var north : Double = parts[0].toDouble()
+        var south : Double = parts[1].toDouble()
+        var north_Int : Int = north.toInt()
+        var south_Int : Int = south.toInt()
+        var north_Dec : Double = (north - north_Int) * 60
+        var south_Dec : Double = (south - south_Int) * 60
+
+        var north_toString : String = ""
+
+        if(north_Int > 0 && south_Int > 0) {
+            north_toString = "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'W"
+        }
+        else if (north_Int > 0 && south_Int < 0) {
+            south_Int = abs(south_Int)
+            south_Dec = abs(south_Dec)
+            north_toString = "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'E"
+        }
+        else if (north_Int < 0 && south_Int > 0) {
+            north_Int = abs(north_Int)
+            north_Dec = abs(north_Dec)
+            north_toString = "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'W"
+        }
+        else if (north_Int < 0 && south_Int < 0) {
+            north_Int = abs(north_Int)
+            north_Dec = abs(north_Dec)
+            south_Int = abs(south_Int)
+            south_Dec = abs(south_Dec)
+            north_toString = "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'E"
+        }
+
+
         holder.binding.cityTitle.text = "${weather.title}"
-        holder.binding.coordinateTextview.text = "37°47′N, 122°25′W"
+        holder.binding.coordinateTextview.text = "${north_toString}"
         holder.binding.distanceTextview.text = "Distance: 8542 km"
         holder.binding.weatherTemp.text = "23°"
         holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_0)
