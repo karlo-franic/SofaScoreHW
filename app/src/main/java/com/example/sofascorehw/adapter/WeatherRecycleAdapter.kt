@@ -4,14 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sofascorehw.OnCityClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
-import com.example.sofascorehw.networking.model.WeathersResponse
-import com.example.sofascorehw.ui.search.WeatherViewModel
+import com.example.sofascorehw.model.shared.WeathersResponse
 import java.lang.Math.abs
 
 class WeatherRecycleAdapter(

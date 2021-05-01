@@ -10,8 +10,6 @@ import androidx.preference.PreferenceManager
 import com.example.sofascorehw.databinding.ActivityAlbumBinding
 import com.example.sofascorehw.language.MyContextWrapper
 import com.example.sofascorehw.language.MyPreference
-import com.example.sofascorehw.ui.add.AddFragment
-import com.example.sofascorehw.ui.albums.AlbumsFragment
 import com.example.sofascorehw.ui.search.WeathersFragment
 import com.example.sofascorehw.ui.settings.SettingsFragment
 import java.util.*
@@ -29,8 +27,6 @@ class AlbumActivity : AppCompatActivity() {
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val addFragment = AddFragment()
-        val albumsFragment = AlbumsFragment()
         val settingsFragment = SettingsFragment()
         val searchFragment = WeathersFragment()
 
@@ -57,8 +53,8 @@ class AlbumActivity : AppCompatActivity() {
                 }
                 R.id.navigation_albums -> {
                     supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.nav_host_fragment, albumsFragment)
-                        commit()
+                        //     replace(R.id.nav_host_fragment, albumsFragment)
+                        //     commit()
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.sofascorehw.networking
+package com.example.sofascorehw.model.networking
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -10,7 +10,9 @@ class Network {
 
     init {
         val httpClient = OkHttpClient.Builder()
-        val retrofit = Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).client(httpClient.build()).build()
+        val retrofit =
+            Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build()).build()
         service = retrofit.create(MetaWeatherService::class.java)
     }
 

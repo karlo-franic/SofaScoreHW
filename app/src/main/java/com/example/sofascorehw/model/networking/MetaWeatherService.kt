@@ -1,15 +1,10 @@
-package com.example.sofascorehw.networking
+package com.example.sofascorehw.model.networking
 
-import com.example.sofascorehw.networking.model.NewWeathersResponse
-import com.example.sofascorehw.networking.model.SpecificWeatherResponse
+import com.example.sofascorehw.model.shared.SpecificWeatherResponse
+import com.example.sofascorehw.model.shared.WeathersResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import kotlinx.coroutines.Deferred
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import com.example.sofascorehw.networking.model.WeathersResponse as WeathersResponse
 
 interface MetaWeatherService {
 

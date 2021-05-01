@@ -3,10 +3,9 @@ package com.example.sofascorehw.ui.search
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.sofascorehw.networking.Network
-import com.example.sofascorehw.networking.model.NewWeathersResponse
-import com.example.sofascorehw.networking.model.SpecificWeatherResponse
-import com.example.sofascorehw.networking.model.WeathersResponse
+import com.example.sofascorehw.model.networking.Network
+import com.example.sofascorehw.model.shared.SpecificWeatherResponse
+import com.example.sofascorehw.model.shared.WeathersResponse
 import kotlinx.coroutines.launch
 
 class WeatherViewModel : ViewModel() {

@@ -15,8 +15,7 @@ import com.example.sofascorehw.OnCityClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.adapter.WeatherRecycleAdapter
 import com.example.sofascorehw.databinding.FragmentSearchBinding
-import com.example.sofascorehw.model.Album
-import com.example.sofascorehw.networking.model.WeathersResponse
+import com.example.sofascorehw.model.shared.WeathersResponse
 
 class WeathersFragment : Fragment(), OnCityClickListener {
 
@@ -38,7 +37,7 @@ class WeathersFragment : Fragment(), OnCityClickListener {
             binding.albumList.adapter = adapter
         })
 
-        binding.searchEditText.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        binding.searchEditText.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.searchEditText.clearFocus()
                 if (query != null) {
@@ -53,9 +52,9 @@ class WeathersFragment : Fragment(), OnCityClickListener {
 
         })
 
-     //   weatherViewModel.getSearchedWeathers("san")
-    //    weatherViewModel.getSpecificWeather(851128)
-     //   weatherViewModel.getSearchedWeathers()
+        //   weatherViewModel.getSearchedWeathers("san")
+        //    weatherViewModel.getSpecificWeather(851128)
+        //   weatherViewModel.getSearchedWeathers()
 
         return root
     }
