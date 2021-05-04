@@ -1,24 +1,38 @@
 package com.example.sofascorehw.model.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
 
 @Dao
 interface WeathersDao {
 
     @Query("SELECT * FROM weathersresponse")
-    fun getAllWeathers(): List<WeathersResponse>
+    suspend fun getAllWeathers(): List<WeathersResponse>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertWeather(weather: WeathersResponse)
+    suspend fun insertWeather(weather: WeathersResponse)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllWeathers(weatherList: List<WeathersResponse>) {
+    suspend fun insertAllWeathers(weatherList: List<WeathersResponse>) {
         for (weather in weatherList) {
             insertWeather(weather)
         }
     }
+
+    @Query("SELECT COUNT('woeid') FROM weathersresponse")
+    suspend fun sizeRecentWeather(): Int
+
+    @Delete
+    suspend fun deleteRecentWeather(weather: WeathersResponse)
+
+    @Query("SELECT * FROM favoriteweather")
+    suspend fun getAllFavoriteWeathers(): List<FavoriteWeather>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertFavoriteWeather(weather: FavoriteWeather)
+
+    @Delete
+    suspend fun deleteFavoriteWeather(weather: FavoriteWeather)
+
 }

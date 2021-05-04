@@ -68,14 +68,7 @@ class WeatherRecycleAdapter(
         holder.binding.weatherTemp.text = "23°"
         holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_0)
         holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
-/*
-        Picasso.get().load(images[position])
-            .resize(100, 100)
-            .centerCrop()
-            .placeholder(com.example.sofascorehw.R.drawable.coffeeresized)
-            .error(com.example.sofascorehw.R.drawable.coffeeresized)
-            .into(holder.itemImage)
-*/
+
 
         holder.itemView.setOnClickListener {
             if (onCityClickListener != null) {

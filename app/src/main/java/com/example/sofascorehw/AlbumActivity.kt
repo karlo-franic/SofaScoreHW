@@ -10,6 +10,7 @@ import androidx.preference.PreferenceManager
 import com.example.sofascorehw.databinding.ActivityAlbumBinding
 import com.example.sofascorehw.language.MyContextWrapper
 import com.example.sofascorehw.language.MyPreference
+import com.example.sofascorehw.ui.favorite.FavoritesFragment
 import com.example.sofascorehw.ui.search.WeathersFragment
 import com.example.sofascorehw.ui.settings.SettingsFragment
 import java.util.*
@@ -29,6 +30,7 @@ class AlbumActivity : AppCompatActivity() {
 
         val settingsFragment = SettingsFragment()
         val searchFragment = WeathersFragment()
+        val favoritesFragment = FavoritesFragment()
 
         //Language
         val sp = PreferenceManager.getDefaultSharedPreferences(this)
@@ -51,10 +53,16 @@ class AlbumActivity : AppCompatActivity() {
                         commit()
                     }
                 }
-                R.id.navigation_albums -> {
+                R.id.navigation_favorite -> {
                     supportFragmentManager.beginTransaction().apply {
-                        //     replace(R.id.nav_host_fragment, albumsFragment)
-                        //     commit()
+                        replace(R.id.nav_host_fragment, favoritesFragment)
+                        commit()
+                    }
+                }
+                R.id.navigation_settings -> {
+                    supportFragmentManager.beginTransaction().apply {
+                             replace(R.id.nav_host_fragment, settingsFragment)
+                             commit()
                     }
                 }
             }

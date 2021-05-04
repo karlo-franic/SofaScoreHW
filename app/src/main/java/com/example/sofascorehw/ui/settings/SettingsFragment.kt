@@ -14,12 +14,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
 
-       override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-
-          // loadSettings()
-       }
+        // loadSettings()
+    }
 
     fun loadSettings() {
         val albumActivity: AlbumActivity = AlbumActivity()

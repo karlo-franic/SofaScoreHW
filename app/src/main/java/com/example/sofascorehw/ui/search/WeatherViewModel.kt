@@ -1,12 +1,16 @@
 package com.example.sofascorehw.ui.search
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sofascorehw.model.db.WeatherDatabase
 import com.example.sofascorehw.model.networking.Network
+import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class WeatherViewModel : ViewModel() {
 
@@ -14,25 +18,10 @@ class WeatherViewModel : ViewModel() {
         value = "This is notifications Fragment"
     }
     val weatherList = MutableLiveData<ArrayList<WeathersResponse>>()
-    lateinit var weatherOne: SpecificWeatherResponse
-
+  //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
+    val weatherOne = MutableLiveData<SpecificWeatherResponse>()
     init {
-        weatherList.value = arrayListOf(
-            WeathersResponse(
-                0,
-                "Zagreb",
-                "City",
-                851128,
-                "45.807259,15.967600"
-            ),
-            WeathersResponse(
-                1,
-                "Belfast",
-                "City",
-                44544,
-                "54.595291,-5.934520"
-            )
-        )
+
     }
 
     fun getSearchedWeathers(title: String) {
@@ -42,17 +31,58 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-
     fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
         return weatherList
     }
 
-
     fun getSpecificWeather(id: Int) {
         viewModelScope.launch {
             val weathersResponse = Network().getService().getSpecificWeather(id)
-            weatherOne = weathersResponse as SpecificWeatherResponse
+            weatherOne.value = weathersResponse
         }
     }
 
+    fun getInitSpecificWeather(): MutableLiveData<SpecificWeatherResponse> {
+        return weatherOne
+    }
+
+    // RECENT - INSERT
+    fun saveRecentWeatherToDb(context: Context, weather: WeathersResponse) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.insertWeather(weather)
+        }
+    }
+    // FAVORITE - INSERT
+    fun saveFavoriteWeatherToDb(context: Context, weather: FavoriteWeather) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.insertFavoriteWeather(weather)
+        }
+    }
+    // RECENT - SELECT ALL
+    fun getRecentWeatherFromDb(context: Context) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            weatherList.value = db?.weathersDao()?.getAllWeathers() as ArrayList<WeathersResponse>
+        }
+    }
+    // RECENT - DELETE
+    fun deleteRecentWeatherFromDb(context: Context, weather: WeathersResponse) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.deleteRecentWeather(weather)
+        }
+    }
+
+    fun sizeOfRecentFromDb(context: Context): Int {
+        var size: Int = 0
+        val v = viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            if (db?.weathersDao()?.sizeRecentWeather() != null) {
+                size = db?.weathersDao()?.sizeRecentWeather()
+            }
+        }
+        return size
+    }
 }

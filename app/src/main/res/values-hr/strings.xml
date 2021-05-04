@@ -23,6 +23,9 @@
     <string name="settings">Postavke</string>
     <string name="page_title">SofaScoreHW</string>
     <string name="title_search">Pretraži</string>
+    <string name="title_favorite">Favoriti</string>
+    <string name="title_settings">Postavke</string>
+    <string name="favorite_header">Moji Gradovi</string>
     <!-- Preference Titles -->
     <string name="languages_header">Jezik</string>
     <string name="sync_header">Sinkronizacija</string>

@@ -11,8 +11,14 @@ data class SpecificWeatherResponse(
     @ColumnInfo(name = "specific_weather_id")
     val id: Int,
     val title: String,
+    val location_type: String,
     val woeid: Int,
-    val weather_state_name: String,
-    val weather_state_abbr: String,
-    val the_temp: String
-) : Serializable
+    val timezone: String
+//    val weather_state_name: String,
+//    val weather_state_abbr: String,
+//    val the_temp: String
+) : Serializable {
+    fun getDetails(): String {
+        return title
+    }
+}
