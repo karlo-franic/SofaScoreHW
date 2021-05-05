@@ -1,5 +1,6 @@
 package com.example.sofascorehw.model.networking
 
+import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
 import retrofit2.http.GET
@@ -13,6 +14,10 @@ interface MetaWeatherService {
 
     @GET("/api/location/{id}")
     suspend fun getSpecificWeather(@Path("id") id: Int): SpecificWeatherResponse
+
+
+    @GET("/api/location/search/")
+    suspend fun getSearchedFavoriteWeathers(@Query("query") search: String): ArrayList<FavoriteWeather>
 
 //    @GET("/api/location/search/?query=san")
 //    suspend fun getSearchedWeathers(): WeathersResponse

@@ -1,4 +1,4 @@
-package com.example.sofascorehw.ui.search
+package com.example.sofascorehw.ui.favorite
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
@@ -10,17 +10,13 @@ import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
-class WeatherViewModel : ViewModel() {
+class WeatherFavoriteViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
     val weatherList = MutableLiveData<ArrayList<WeathersResponse>>()
     val weatherFavoriteList = MutableLiveData<ArrayList<FavoriteWeather>>()
-  //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
     val weatherOne = MutableLiveData<SpecificWeatherResponse>()
+
     init {
 
     }
@@ -32,8 +28,19 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
+    fun getSearchedFavoriteWeathers(title: String) {
+        viewModelScope.launch {
+            val weathersResponse = Network().getService().getSearchedFavoriteWeathers(title)
+            weatherFavoriteList.value = weathersResponse as ArrayList<FavoriteWeather>
+        }
+    }
+
     fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
         return weatherList
+    }
+
+    fun getInitFavoriteWeathers(): MutableLiveData<ArrayList<FavoriteWeather>> {
+        return weatherFavoriteList
     }
 
     fun getSpecificWeather(id: Int) {
@@ -94,7 +101,9 @@ class WeatherViewModel : ViewModel() {
         var size: Int = 0
         val v = viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
-            size = db?.weathersDao()?.sizeRecentWeather()!!
+            if (db?.weathersDao()?.sizeRecentWeather() != null) {
+                size = db?.weathersDao()?.sizeRecentWeather()
+            }
         }
         return size
     }

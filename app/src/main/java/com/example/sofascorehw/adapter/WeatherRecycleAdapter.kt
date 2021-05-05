@@ -6,15 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sofascorehw.OnCityClickListener
+import com.example.sofascorehw.OnFavoriteClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
+import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
+import com.example.sofascorehw.ui.favorite.WeatherFavoriteViewModel
+import com.example.sofascorehw.ui.search.WeatherViewModel
 import java.lang.Math.abs
+import java.lang.NullPointerException
 
 class WeatherRecycleAdapter(
     val context: Context,
     val weatherList: ArrayList<WeathersResponse>,
-    val onCityClickListener: OnCityClickListener?
+    val onCityClickListener: OnCityClickListener?,
+    val onFavoriteClickListener: OnFavoriteClickListener
 ) : RecyclerView.Adapter<WeatherRecycleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,6 +31,21 @@ class WeatherRecycleAdapter(
 
     override fun getItemCount(): Int {
         return weatherList.size
+    }
+
+    fun checkIfFavorite(temp_weather: FavoriteWeather, weatherViewModel: WeatherViewModel): Boolean {
+        try {
+            if (weatherViewModel.weatherFavoriteList.value!!.contains(temp_weather)) {
+
+            }
+        } catch (e: NullPointerException) {
+            //it's ok
+        }
+    //    if (weatherViewModel.weatherFavoriteList.value.contains(temp_weather)) { }
+
+
+
+        return true
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -62,6 +83,7 @@ class WeatherRecycleAdapter(
         }
 
 
+
         holder.binding.cityTitle.text = "${weather.title}"
         holder.binding.coordinateTextview.text = "${north_toString}"
         holder.binding.distanceTextview.text = "Distance: 8542 km"
@@ -73,6 +95,14 @@ class WeatherRecycleAdapter(
         holder.itemView.setOnClickListener {
             if (onCityClickListener != null) {
                 onCityClickListener.onCityItemClicked(position)
+            }
+        }
+
+        holder.binding.favoriteImage.setOnClickListener {
+            holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_1)
+
+            if (onFavoriteClickListener != null) {
+                onFavoriteClickListener.onFavoriteBtnClicked(position)
             }
         }
     }

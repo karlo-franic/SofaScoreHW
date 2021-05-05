@@ -14,13 +14,15 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sofascorehw.CollapsibleToolbarActivity
 import com.example.sofascorehw.OnCityClickListener
+import com.example.sofascorehw.OnFavoriteClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.adapter.WeatherRecycleAdapter
 import com.example.sofascorehw.databinding.FragmentSearchBinding
+import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
 
-class WeathersFragment : Fragment(), OnCityClickListener {
+class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListener {
 
     private val weatherViewModel: WeatherViewModel by activityViewModels()
     private lateinit var binding: FragmentSearchBinding
@@ -35,8 +37,8 @@ class WeathersFragment : Fragment(), OnCityClickListener {
         binding = FragmentSearchBinding.bind(view)
         val root = binding.root
 
-        /*
-        var zaIzbrisat = WeathersResponse(28743736, "San Francisco", "City", 2487956, "40.71455,-74.007118")
+/*
+        var zaIzbrisat = WeathersResponse(671072, "San Francisco", "City", 2487956, "40.71455,-74.007118")
 
         weatherViewModel.getInitWeathers().observe(viewLifecycleOwner, Observer { cities ->
             cities.forEach { city ->
@@ -46,11 +48,12 @@ class WeathersFragment : Fragment(), OnCityClickListener {
             }
         })
         weatherViewModel.deleteRecentWeatherFromDb(requireContext(), zaIzbrisat)
-    */
+*/
         binding.albumList.layoutManager = LinearLayoutManager(context)
         weatherViewModel.getRecentWeatherFromDb(requireContext())
         weatherViewModel.weatherList.observe(viewLifecycleOwner, Observer {
-            val adapter = WeatherRecycleAdapter(requireContext(), it, this)
+            val adapter = WeatherRecycleAdapter(requireContext(), it, this, this)
+        //    adapter.checkIfFavorite(weatherViewModel)
             binding.albumList.adapter = adapter
         })
 
@@ -94,6 +97,23 @@ class WeathersFragment : Fragment(), OnCityClickListener {
         intent.putExtra("woeid", all_Cities[position].woeid)
 
         startActivity(intent)
+    }
+
+    override fun onFavoriteBtnClicked(position: Int) {
+        val all_Cities = mutableListOf<WeathersResponse>()
+
+        weatherViewModel.getInitWeathers().observe(this, Observer { cities ->
+            cities.forEach { city ->
+                all_Cities += city
+            }
+        })
+        weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
+
+        var weatherOne = FavoriteWeather(all_Cities[position].woeid, all_Cities[position].title, all_Cities[position].location_type, all_Cities[position].woeid, all_Cities[position].latt_long)
+
+        weatherViewModel.saveFavoriteWeatherToDb(requireContext(), weatherOne)
+        weatherViewModel.deleteRecentWeatherFromDb(requireContext(), all_Cities[position])
+
     }
 }
 
