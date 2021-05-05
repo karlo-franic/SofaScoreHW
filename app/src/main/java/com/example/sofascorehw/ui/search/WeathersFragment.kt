@@ -53,7 +53,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         weatherViewModel.getRecentWeatherFromDb(requireContext())
         weatherViewModel.weatherList.observe(viewLifecycleOwner, Observer {
             val adapter = WeatherRecycleAdapter(requireContext(), it, this, this)
-        //    adapter.checkIfFavorite(weatherViewModel)
+            //    adapter.checkIfFavorite(weatherViewModel)
             binding.albumList.adapter = adapter
         })
 
@@ -89,7 +89,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         var weatherOne: WeathersResponse = all_Cities[position]
         weatherOne.id = all_Cities[position].woeid
 
-      //  counter += 1
+        //  counter += 1
 
         weatherViewModel.saveRecentWeatherToDb(requireContext(), all_Cities[position])
 
@@ -109,7 +109,13 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         })
         weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
 
-        var weatherOne = FavoriteWeather(all_Cities[position].woeid, all_Cities[position].title, all_Cities[position].location_type, all_Cities[position].woeid, all_Cities[position].latt_long)
+        var weatherOne = FavoriteWeather(
+            all_Cities[position].woeid,
+            all_Cities[position].title,
+            all_Cities[position].location_type,
+            all_Cities[position].woeid,
+            all_Cities[position].latt_long
+        )
 
         weatherViewModel.saveFavoriteWeatherToDb(requireContext(), weatherOne)
         weatherViewModel.deleteRecentWeatherFromDb(requireContext(), all_Cities[position])

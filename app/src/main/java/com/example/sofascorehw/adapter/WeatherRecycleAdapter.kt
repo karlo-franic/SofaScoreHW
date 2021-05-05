@@ -33,53 +33,40 @@ class WeatherRecycleAdapter(
         return weatherList.size
     }
 
-    fun checkIfFavorite(temp_weather: FavoriteWeather, weatherViewModel: WeatherViewModel): Boolean {
-        try {
-            if (weatherViewModel.weatherFavoriteList.value!!.contains(temp_weather)) {
-
-            }
-        } catch (e: NullPointerException) {
-            //it's ok
-        }
-    //    if (weatherViewModel.weatherFavoriteList.value.contains(temp_weather)) { }
-
-
-
-        return true
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weather = weatherList[position]
 
         val parts = weather.latt_long.split(",")
-        var north : Double = parts[0].toDouble()
-        var south : Double = parts[1].toDouble()
-        var north_Int : Int = north.toInt()
-        var south_Int : Int = south.toInt()
-        var north_Dec : Double = (north - north_Int) * 60
-        var south_Dec : Double = (south - south_Int) * 60
+        var north: Double = parts[0].toDouble()
+        var south: Double = parts[1].toDouble()
+        var north_Int: Int = north.toInt()
+        var south_Int: Int = south.toInt()
+        var north_Dec: Double = (north - north_Int) * 60
+        var south_Dec: Double = (south - south_Int) * 60
 
-        var north_toString : String = ""
+        var north_toString: String = ""
 
-        if(north_Int > 0 && south_Int > 0) {
-            north_toString = "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'W"
-        }
-        else if (north_Int > 0 && south_Int < 0) {
+        if (north_Int > 0 && south_Int > 0) {
+            north_toString =
+                "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'W"
+        } else if (north_Int > 0 && south_Int < 0) {
             south_Int = abs(south_Int)
             south_Dec = abs(south_Dec)
-            north_toString = "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'E"
-        }
-        else if (north_Int < 0 && south_Int > 0) {
+            north_toString =
+                "${north_Int}°${north_Dec.toInt()}'N, ${south_Int}°${south_Dec.toInt()}'E"
+        } else if (north_Int < 0 && south_Int > 0) {
             north_Int = abs(north_Int)
             north_Dec = abs(north_Dec)
-            north_toString = "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'W"
-        }
-        else if (north_Int < 0 && south_Int < 0) {
+            north_toString =
+                "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'W"
+        } else if (north_Int < 0 && south_Int < 0) {
             north_Int = abs(north_Int)
             north_Dec = abs(north_Dec)
             south_Int = abs(south_Int)
             south_Dec = abs(south_Dec)
-            north_toString = "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'E"
+            north_toString =
+                "${north_Int}°${north_Dec.toInt()}'S, ${south_Int}°${south_Dec.toInt()}'E"
         }
 
 

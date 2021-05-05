@@ -19,8 +19,10 @@ class WeatherViewModel : ViewModel() {
     }
     val weatherList = MutableLiveData<ArrayList<WeathersResponse>>()
     val weatherFavoriteList = MutableLiveData<ArrayList<FavoriteWeather>>()
-  //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
+
+    //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
     val weatherOne = MutableLiveData<SpecificWeatherResponse>()
+
     init {
 
     }
@@ -54,6 +56,7 @@ class WeatherViewModel : ViewModel() {
             db?.weathersDao()?.insertWeather(weather)
         }
     }
+
     // FAVORITE - INSERT
     fun saveFavoriteWeatherToDb(context: Context, weather: FavoriteWeather) {
         viewModelScope.launch {
@@ -61,6 +64,7 @@ class WeatherViewModel : ViewModel() {
             db?.weathersDao()?.insertFavoriteWeather(weather)
         }
     }
+
     // RECENT - SELECT ALL
     fun getRecentWeatherFromDb(context: Context) {
         viewModelScope.launch {
@@ -68,13 +72,16 @@ class WeatherViewModel : ViewModel() {
             weatherList.value = db?.weathersDao()?.getAllWeathers() as ArrayList<WeathersResponse>
         }
     }
+
     // FAVORITE - SELECT ALL
     fun getFavoriteWeatherFromDb(context: Context) {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
-            weatherFavoriteList.value = db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
+            weatherFavoriteList.value =
+                db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
         }
     }
+
     // RECENT - DELETE
     fun deleteRecentWeatherFromDb(context: Context, weather: WeathersResponse) {
         viewModelScope.launch {
@@ -82,6 +89,7 @@ class WeatherViewModel : ViewModel() {
             db?.weathersDao()?.deleteRecentWeather(weather)
         }
     }
+
     // FAVORITE - DELETE
     fun deleteFavoriteWeatherFromDb(context: Context, weather: FavoriteWeather) {
         viewModelScope.launch {
@@ -89,6 +97,7 @@ class WeatherViewModel : ViewModel() {
             db?.weathersDao()?.deleteFavoriteWeather(weather)
         }
     }
+
     // RECENT - COUNT()
     fun sizeOfRecentFromDb(context: Context): Int {
         var size: Int = 0

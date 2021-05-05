@@ -61,6 +61,7 @@ class WeatherFavoriteViewModel : ViewModel() {
             db?.weathersDao()?.insertWeather(weather)
         }
     }
+
     // FAVORITE - INSERT
     fun saveFavoriteWeatherToDb(context: Context, weather: FavoriteWeather) {
         viewModelScope.launch {
@@ -68,6 +69,7 @@ class WeatherFavoriteViewModel : ViewModel() {
             db?.weathersDao()?.insertFavoriteWeather(weather)
         }
     }
+
     // RECENT - SELECT ALL
     fun getRecentWeatherFromDb(context: Context) {
         viewModelScope.launch {
@@ -75,13 +77,16 @@ class WeatherFavoriteViewModel : ViewModel() {
             weatherList.value = db?.weathersDao()?.getAllWeathers() as ArrayList<WeathersResponse>
         }
     }
+
     // FAVORITE - SELECT ALL
     fun getFavoriteWeatherFromDb(context: Context) {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
-            weatherFavoriteList.value = db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
+            weatherFavoriteList.value =
+                db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
         }
     }
+
     // RECENT - DELETE
     fun deleteRecentWeatherFromDb(context: Context, weather: WeathersResponse) {
         viewModelScope.launch {
@@ -89,6 +94,7 @@ class WeatherFavoriteViewModel : ViewModel() {
             db?.weathersDao()?.deleteRecentWeather(weather)
         }
     }
+
     // FAVORITE - DELETE
     fun deleteFavoriteWeatherFromDb(context: Context, weather: FavoriteWeather) {
         viewModelScope.launch {
@@ -96,6 +102,7 @@ class WeatherFavoriteViewModel : ViewModel() {
             db?.weathersDao()?.deleteFavoriteWeather(weather)
         }
     }
+
     // RECENT - COUNT()
     fun sizeOfRecentFromDb(context: Context): Int {
         var size: Int = 0

@@ -61,8 +61,8 @@ class AlbumActivity : AppCompatActivity() {
                 }
                 R.id.navigation_settings -> {
                     supportFragmentManager.beginTransaction().apply {
-                             replace(R.id.nav_host_fragment, settingsFragment)
-                             commit()
+                        replace(R.id.nav_host_fragment, settingsFragment)
+                        commit()
                     }
                 }
             }
