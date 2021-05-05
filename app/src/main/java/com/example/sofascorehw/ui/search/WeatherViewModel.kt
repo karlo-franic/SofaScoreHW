@@ -96,6 +96,7 @@ class WeatherViewModel : ViewModel() {
             val db = WeatherDatabase.getDatabase(context)
             size = db?.weathersDao()?.sizeRecentWeather()!!
         }
+
         return size
     }
 }

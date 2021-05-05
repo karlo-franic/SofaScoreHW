@@ -23,6 +23,9 @@ interface WeathersDao {
     @Query("SELECT COUNT(*) FROM weathersresponse")
     suspend fun sizeRecentWeather(): Int
 
+    @Query("SELECT COUNT(*) FROM favoriteweather")
+    suspend fun sizeFavoriteWeather(): Int
+
     @Delete
     suspend fun deleteRecentWeather(weather: WeathersResponse)
 
