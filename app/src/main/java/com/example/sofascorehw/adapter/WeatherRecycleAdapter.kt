@@ -10,7 +10,9 @@ import com.example.sofascorehw.OnFavoriteClickListener
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.WeatherCardLayoutBinding
 import com.example.sofascorehw.model.shared.FavoriteWeather
+import com.example.sofascorehw.model.shared.WeatherRecentWrapper
 import com.example.sofascorehw.model.shared.WeathersResponse
+import com.example.sofascorehw.model.shared.specificweather.SpecificWeather
 import com.example.sofascorehw.ui.favorite.WeatherFavoriteViewModel
 import com.example.sofascorehw.ui.search.WeatherViewModel
 import java.lang.Math.abs
@@ -18,7 +20,7 @@ import java.lang.NullPointerException
 
 class WeatherRecycleAdapter(
     val context: Context,
-    val weatherList: ArrayList<WeathersResponse>,
+    val weatherRecentWrapper: WeatherRecentWrapper,
     val onCityClickListener: OnCityClickListener?,
     val onFavoriteClickListener: OnFavoriteClickListener
 ) : RecyclerView.Adapter<WeatherRecycleAdapter.ViewHolder>() {
@@ -30,12 +32,13 @@ class WeatherRecycleAdapter(
     }
 
     override fun getItemCount(): Int {
-        return weatherList.size
+        return weatherRecentWrapper.weatherResponseList.size
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val weather = weatherList[position]
+        val weather = weatherRecentWrapper.weatherResponseList[position]
+        val specificWeather = weatherRecentWrapper.specificWeatherResponseList[position]
 
         val parts = weather.latt_long.split(",")
         var north: Double = parts[0].toDouble()
@@ -74,9 +77,25 @@ class WeatherRecycleAdapter(
         holder.binding.cityTitle.text = "${weather.title}"
         holder.binding.coordinateTextview.text = "${north_toString}"
         holder.binding.distanceTextview.text = "Distance: 8542 km"
-        holder.binding.weatherTemp.text = "23°"
+        holder.binding.weatherTemp.text = "${specificWeather.consolidatedWeather[0].theTemp.toInt()}°"
         holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_0)
-        holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
+
+        when (specificWeather.consolidatedWeather[0].weatherStateAbbr) {
+            "c" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_c)
+            "h" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_h)
+            "hc" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_hc)
+            "hr" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_hr)
+            "lc" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
+            "lr" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_lr)
+            "s" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_s)
+            "sl" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_sl)
+            "sn" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_sn)
+            "t" -> holder.binding.weatherIcon.setImageResource(R.drawable.ic_t)
+            else -> {
+                holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
+            }
+        }
+      //  holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
 
 
         holder.itemView.setOnClickListener {

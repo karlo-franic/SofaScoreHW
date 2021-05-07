@@ -36,7 +36,7 @@ class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListen
 
         binding.favoriteList.layoutManager = LinearLayoutManager(context)
         weatherFavoriteViewModel.getFavoriteWeatherFromDb(requireContext())
-        weatherFavoriteViewModel.weatherFavoriteList.observe(viewLifecycleOwner, Observer {
+        weatherFavoriteViewModel.weatherFavoriteWrapperList.observe(viewLifecycleOwner, Observer {
             val adapter = WeatherFavoriteRecycleAdapter(requireContext(), it, this, this)
             binding.favoriteList.adapter = adapter
         })

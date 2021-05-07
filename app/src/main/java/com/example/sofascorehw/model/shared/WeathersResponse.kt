@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
+import java.text.FieldPosition
 
 @Entity
 data class WeathersResponse(
@@ -26,4 +27,11 @@ data class FavoriteWeather(
     val location_type: String,
     val woeid: Int,
     val latt_long: String
+) : Serializable
+
+@Entity
+data class FavoriteOrder(
+    @PrimaryKey
+    val woeid: Int,
+    val position: Int
 ) : Serializable

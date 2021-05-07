@@ -7,11 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.sofascorehw.model.db.WeatherDatabase
 import com.example.sofascorehw.model.networking.Network
 import com.example.sofascorehw.model.shared.FavoriteWeather
-import com.example.sofascorehw.model.shared.SpecificWeatherResponse
+import com.example.sofascorehw.model.shared.WeatherRecentWrapper
 import com.example.sofascorehw.model.shared.WeathersResponse
+import com.example.sofascorehw.model.shared.specificweather.SpecificWeather
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class WeatherViewModel : ViewModel() {
 
@@ -22,8 +23,12 @@ class WeatherViewModel : ViewModel() {
     val weatherFavoriteList = MutableLiveData<ArrayList<FavoriteWeather>>()
     val weatherSearchList = MutableLiveData<ArrayList<WeathersResponse>>()
 
-    //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
-    val weatherOne = MutableLiveData<SpecificWeatherResponse>()
+    val specificWeatherSearchList = MutableLiveData<ArrayList<SpecificWeather>>()
+    val specificWeatherFavoriteList = MutableLiveData<ArrayList<SpecificWeather>>()
+
+    val weatherRecentWrapperList = MutableLiveData<WeatherRecentWrapper>()
+
+    val weatherOne = MutableLiveData<SpecificWeather>()
 
     init {
 
@@ -31,18 +36,26 @@ class WeatherViewModel : ViewModel() {
 
     fun getSearchedWeathers(title: String) {
         viewModelScope.launch {
-            val weatherResult = async { Network().getService().getSearchedWeathers(title) }
-            val weathersResponse = weatherResult.await()
+            val weathersResponse = Network().getService().getSearchedWeathers(title)
             weatherSearchList.value = weathersResponse as ArrayList<WeathersResponse>
+        }
+    }
+
+    fun getSearchedWeathersWithSpecifics(title: String) {
+        viewModelScope.launch {
+            val weatherResult = Network().getService().getSearchedWeathers(title)
+            val asyncTasks = weatherResult.map { weather ->
+                async { Network().getService().getSpecificWeather(weather.woeid) }
+            }
+            val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
+            specificWeatherSearchList.value = responseList as ArrayList<SpecificWeather>
+            weatherList.value = weatherResult as ArrayList<WeathersResponse>
+            weatherRecentWrapperList.value = WeatherRecentWrapper(weatherResult, responseList)
         }
     }
 
     fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
         return weatherList
-    }
-
-    fun getSearchedWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
-        return weatherSearchList
     }
 
     fun getSpecificWeather(id: Int) {
@@ -52,7 +65,7 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-    fun getInitSpecificWeather(): MutableLiveData<SpecificWeatherResponse> {
+    fun getInitSpecificWeather(): MutableLiveData<SpecificWeather> {
         return weatherOne
     }
 
@@ -77,6 +90,13 @@ class WeatherViewModel : ViewModel() {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
             weatherList.value = db?.weathersDao()?.getAllWeathers() as ArrayList<WeathersResponse>
+            val recentResult = db?.weathersDao()?.getAllWeathers() as ArrayList<WeathersResponse>
+            val asyncTasks = recentResult.map { weather ->
+                async { Network().getService().getSpecificWeather(weather.woeid) }
+            }
+            val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
+            specificWeatherSearchList.value = responseList as ArrayList<SpecificWeather>
+            weatherRecentWrapperList.value = WeatherRecentWrapper(recentResult, responseList)
         }
     }
 
@@ -84,8 +104,7 @@ class WeatherViewModel : ViewModel() {
     fun getFavoriteWeatherFromDb(context: Context) {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
-            weatherFavoriteList.value =
-                db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
+            weatherFavoriteList.value = db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
         }
     }
 
@@ -102,6 +121,22 @@ class WeatherViewModel : ViewModel() {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
             db?.weathersDao()?.deleteFavoriteWeather(weather)
+        }
+    }
+
+    // RECENT - DELETE ALL
+    fun deleteAllRecentWeatherFromDb(context: Context) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.deleteAllRecentWeather()
+        }
+    }
+
+    // FAVORITE - DELETE ALL
+    fun deleteAllFavoriteWeatherFromDb(context: Context) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.deleteAllFavoriteWeather()
         }
     }
 

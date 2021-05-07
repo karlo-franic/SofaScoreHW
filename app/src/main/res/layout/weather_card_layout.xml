@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="125dp"
     app:cardBackgroundColor="@color/White"
     app:cardCornerRadius="12dp"
     app:cardElevation="3dp"
@@ -12,7 +12,8 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp">
+    android:layout_marginBottom="4dp"
+    android:paddingBottom="5dp" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
@@ -83,7 +84,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 style="@style/Display2DarkRight"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="4dp"/>
 
             <ImageView
                 android:id="@+id/weather_icon"

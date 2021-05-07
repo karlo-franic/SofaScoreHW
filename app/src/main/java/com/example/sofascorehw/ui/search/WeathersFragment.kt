@@ -23,7 +23,6 @@ import com.example.sofascorehw.R
 import com.example.sofascorehw.adapter.WeatherRecycleAdapter
 import com.example.sofascorehw.databinding.FragmentSearchBinding
 import com.example.sofascorehw.model.shared.FavoriteWeather
-import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
 import android.widget.AutoCompleteTextView
 
@@ -54,11 +53,13 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         })
         weatherViewModel.deleteRecentWeatherFromDb(requireContext(), zaIzbrisat)
 */
+    //    weatherViewModel.deleteAllRecentWeatherFromDb(requireContext())
+    //    weatherViewModel.deleteAllFavoriteWeatherFromDb(requireContext())
+
         binding.albumList.layoutManager = LinearLayoutManager(context)
         weatherViewModel.getRecentWeatherFromDb(requireContext())
-        weatherViewModel.weatherList.observe(viewLifecycleOwner, Observer {
+        weatherViewModel.weatherRecentWrapperList.observe(viewLifecycleOwner, Observer {
             val adapter = WeatherRecycleAdapter(requireContext(), it, this, this)
-            //    adapter.checkIfFavorite(weatherViewModel)
             binding.albumList.adapter = adapter
         })
 
@@ -95,18 +96,18 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         binding.searchEditText.setOnItemClickListener { parent, view, position, id ->
             val all_Cities = mutableListOf<WeathersResponse>()
 
-            weatherViewModel.getSearchedWeathers().observe(viewLifecycleOwner, Observer { cities ->
+            weatherViewModel.weatherSearchList.observe(viewLifecycleOwner, Observer { cities ->
                 cities.forEach { city ->
                     all_Cities += city
                 }
             })
 
-            weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
+          //  weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
 
             var weatherOne: WeathersResponse = all_Cities[position]
             weatherOne.id = all_Cities[position].woeid
 
-            weatherViewModel.saveRecentWeatherToDb(requireContext(), all_Cities[position])
+            weatherViewModel.saveRecentWeatherToDb(requireContext(), weatherOne)
 
             val intent = Intent(this.context, CollapsibleToolbarActivity::class.java)
             intent.putExtra("woeid", all_Cities[position].woeid)
@@ -123,7 +124,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
         val all_Cities = mutableListOf<WeathersResponse>()
 
-        weatherViewModel.getInitWeathers().observe(this, Observer { cities ->
+        weatherViewModel.weatherList.observe(this, Observer { cities ->
             cities.forEach { city ->
                 all_Cities += city
             }
@@ -146,7 +147,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
     override fun onFavoriteBtnClicked(position: Int) {
         val all_Cities = mutableListOf<WeathersResponse>()
 
-        weatherViewModel.getInitWeathers().observe(this, Observer { cities ->
+        weatherViewModel.weatherList.observe(this, Observer { cities ->
             cities.forEach { city ->
                 all_Cities += city
             }

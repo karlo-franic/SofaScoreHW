@@ -8,7 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.sofascorehw.databinding.ActivityCollapsibleToolbarBinding
-import com.example.sofascorehw.model.shared.SpecificWeatherResponse
+import com.example.sofascorehw.model.shared.specificweather.SpecificWeather
 import com.example.sofascorehw.ui.search.WeatherViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -28,7 +28,7 @@ class CollapsibleToolbarActivity : AppCompatActivity() {
 
         coordinatorLayout = binding.coordinatorLayout
 
-        val all_Spec_Cities = mutableListOf<SpecificWeatherResponse>()
+        val all_Spec_Cities = mutableListOf<SpecificWeather>()
 
         /*
         weatherViewModel.getInitSpecificWeather().observe(this, Observer { cities ->
@@ -46,8 +46,8 @@ class CollapsibleToolbarActivity : AppCompatActivity() {
         }
          */
 
-        var someWeather : SpecificWeatherResponse
-        weatherViewModel.getInitSpecificWeather().observe(this, Observer {
+        var someWeather : SpecificWeather
+        weatherViewModel.weatherOne.observe(this, Observer {
             someWeather = it
             if (someWeather != null){
                 binding.cityTitle.text = someWeather.title
