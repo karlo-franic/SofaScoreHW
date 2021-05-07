@@ -3,9 +3,13 @@ package com.example.sofascorehw.ui.search
 import android.content.Intent
 import android.net.Network
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -21,6 +25,7 @@ import com.example.sofascorehw.databinding.FragmentSearchBinding
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
+import android.widget.AutoCompleteTextView
 
 class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListener {
 
@@ -57,20 +62,59 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
             binding.albumList.adapter = adapter
         })
 
-        binding.searchEditText.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                binding.searchEditText.clearFocus()
-                if (query != null) {
+
+        binding.searchEditText.threshold = 3
+        var query = ""
+
+        binding.searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                query = s.toString()
+                if (s?.length!! > 2) {
                     weatherViewModel.getSearchedWeathers(query)
+
+                    var titleList : MutableList<String> = ArrayList()
+                    weatherViewModel.weatherSearchList.observe(viewLifecycleOwner, Observer { cities ->
+                        cities.forEach { city ->
+                            titleList.add(city.title)
+                        }
+                    })
+
+                    var searchAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, titleList)
+                    binding.searchEditText.setAdapter(searchAdapter)
                 }
-                return false
             }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-
         })
+
+        binding.searchEditText.setOnItemClickListener { parent, view, position, id ->
+            val all_Cities = mutableListOf<WeathersResponse>()
+
+            weatherViewModel.getSearchedWeathers().observe(viewLifecycleOwner, Observer { cities ->
+                cities.forEach { city ->
+                    all_Cities += city
+                }
+            })
+
+            weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
+
+            var weatherOne: WeathersResponse = all_Cities[position]
+            weatherOne.id = all_Cities[position].woeid
+
+            weatherViewModel.saveRecentWeatherToDb(requireContext(), all_Cities[position])
+
+            val intent = Intent(this.context, CollapsibleToolbarActivity::class.java)
+            intent.putExtra("woeid", all_Cities[position].woeid)
+
+            startActivity(intent)
+        }
+
+
 
         return root
     }
@@ -122,4 +166,5 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
     }
 }
+
 

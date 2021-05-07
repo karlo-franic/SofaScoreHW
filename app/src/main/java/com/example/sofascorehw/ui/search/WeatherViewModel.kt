@@ -9,6 +9,7 @@ import com.example.sofascorehw.model.networking.Network
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.SpecificWeatherResponse
 import com.example.sofascorehw.model.shared.WeathersResponse
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -19,6 +20,7 @@ class WeatherViewModel : ViewModel() {
     }
     val weatherList = MutableLiveData<ArrayList<WeathersResponse>>()
     val weatherFavoriteList = MutableLiveData<ArrayList<FavoriteWeather>>()
+    val weatherSearchList = MutableLiveData<ArrayList<WeathersResponse>>()
 
     //  val weatherOne = MutableLiveData<ArrayList<SpecificWeatherResponse>>()
     val weatherOne = MutableLiveData<SpecificWeatherResponse>()
@@ -29,13 +31,18 @@ class WeatherViewModel : ViewModel() {
 
     fun getSearchedWeathers(title: String) {
         viewModelScope.launch {
-            val weathersResponse = Network().getService().getSearchedWeathers(title)
-            weatherList.value = weathersResponse as ArrayList<WeathersResponse>
+            val weatherResult = async { Network().getService().getSearchedWeathers(title) }
+            val weathersResponse = weatherResult.await()
+            weatherSearchList.value = weathersResponse as ArrayList<WeathersResponse>
         }
     }
 
     fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
         return weatherList
+    }
+
+    fun getSearchedWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
+        return weatherSearchList
     }
 
     fun getSpecificWeather(id: Int) {
