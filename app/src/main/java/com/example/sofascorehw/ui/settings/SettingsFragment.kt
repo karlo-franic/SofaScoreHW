@@ -39,10 +39,11 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.bind(view)
         val root = binding.root
         myPreference = MyPreference(requireContext())
-    //    myPreference.setLoginCount(myPreference.getLoginCount())
+        //    myPreference.setLoginCount(myPreference.getLoginCount())
 
         val itemsLang = listOf("English", "Hrvatski")
-        val adapterLang = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsLang)
+        val adapterLang =
+            ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsLang)
         binding.autocompleteLang.setAdapter(adapterLang)
         if (myPreference.getLoginCount() == "en") {
             binding.autocompleteLang.setText("English", false)
@@ -50,10 +51,11 @@ class SettingsFragment : Fragment() {
             binding.autocompleteLang.setText("Hrvatski", false)
         }
 
-   //     var x: String = myPreference.getLoginCount()
-   //     var c = 0
+        //     var x: String = myPreference.getLoginCount()
+        //     var c = 0
         val itemsCity = listOf("Zagreb", "London", "New York", "Tokyo")
-        val adapterCity = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsCity)
+        val adapterCity =
+            ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsCity)
         binding.autocompleteCity.setAdapter(adapterCity)
         binding.autocompleteCity.setText("Zagreb", false)
 

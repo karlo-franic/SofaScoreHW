@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.sofascorehw.model.shared.FavoriteOrder
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
 
 @Database(
-    entities = [WeathersResponse::class, FavoriteWeather::class, FavoriteOrder::class],
+    entities = [WeathersResponse::class, FavoriteWeather::class],
     version = 1,
     exportSchema = false
 )

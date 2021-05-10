@@ -71,7 +71,8 @@ class ReorderFavoriteRecycleAdapter(
         holder.binding.cityTitle.text = "${weather.title}"
         holder.binding.coordinateTextview.text = "${north_toString}"
         holder.binding.distanceTextview.text = "Distance: 1242 km"
-        holder.binding.weatherTemp.text = "${specificWeather.consolidatedWeather[0].theTemp.toInt()}°"
+        holder.binding.weatherTemp.text =
+            "${specificWeather.consolidatedWeather[0].theTemp.toInt()}°"
         holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_1)
 
         when (specificWeather.consolidatedWeather[0].weatherStateAbbr) {

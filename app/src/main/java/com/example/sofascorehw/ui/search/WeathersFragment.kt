@@ -31,7 +31,6 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
     private val weatherViewModel: WeatherViewModel by activityViewModels()
     private lateinit var binding: FragmentSearchBinding
-    private var counter: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,20 +41,8 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         binding = FragmentSearchBinding.bind(view)
         val root = binding.root
 
-/*
-        var zaIzbrisat = WeathersResponse(671072, "San Francisco", "City", 2487956, "40.71455,-74.007118")
-
-        weatherViewModel.getInitWeathers().observe(viewLifecycleOwner, Observer { cities ->
-            cities.forEach { city ->
-                if (city.title == "Moscow") {
-                   // zaIzbrisat = city
-                }
-            }
-        })
-        weatherViewModel.deleteRecentWeatherFromDb(requireContext(), zaIzbrisat)
-*/
-    //    weatherViewModel.deleteAllRecentWeatherFromDb(requireContext())
-    //    weatherViewModel.deleteAllFavoriteWeatherFromDb(requireContext())
+        //    weatherViewModel.deleteAllRecentWeatherFromDb(requireContext())
+        //    weatherViewModel.deleteAllFavoriteWeatherFromDb(requireContext())
 
         binding.albumList.layoutManager = LinearLayoutManager(context)
         weatherViewModel.getRecentWeatherFromDb(requireContext())
@@ -72,6 +59,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
+
             override fun afterTextChanged(s: Editable?) {
 
             }
@@ -81,14 +69,20 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
                 if (s?.length!! > 1) {
                     weatherViewModel.getSearchedWeathers(query)
 
-                    var titleList : MutableList<String> = ArrayList()
-                    weatherViewModel.weatherSearchList.observe(viewLifecycleOwner, Observer { cities ->
-                        cities.forEach { city ->
-                            titleList.add(city.title)
-                        }
-                    })
+                    var titleList: MutableList<String> = ArrayList()
+                    weatherViewModel.weatherSearchList.observe(
+                        viewLifecycleOwner,
+                        Observer { cities ->
+                            cities.forEach { city ->
+                                titleList.add(city.title)
+                            }
+                        })
 
-                    var searchAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, titleList)
+                    var searchAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_list_item_1,
+                        titleList
+                    )
                     binding.searchEditText.setAdapter(searchAdapter)
                 }
             }
@@ -103,8 +97,6 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
                 }
             })
 
-          //  weatherViewModel.getSpecificWeather(all_Cities[position].woeid)
-
             var weatherOne: WeathersResponse = all_Cities[position]
             weatherOne.id = all_Cities[position].woeid
             weatherOne.date = LocalDateTime.now().toString()
@@ -113,11 +105,8 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
             val intent = Intent(this.context, CollapsibleToolbarActivity::class.java)
             intent.putExtra("woeid", all_Cities[position].woeid)
-
             startActivity(intent)
         }
-
-
 
         return root
     }
@@ -135,8 +124,6 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
         var weatherOne: WeathersResponse = all_Cities[position]
         weatherOne.id = all_Cities[position].woeid
-
-        //  counter += 1
 
         weatherViewModel.saveRecentWeatherToDb(requireContext(), all_Cities[position])
 

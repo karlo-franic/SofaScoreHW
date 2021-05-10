@@ -21,11 +21,9 @@ class AlbumActivity : AppCompatActivity(), FavoriteFragmentCommunicator {
     private lateinit var binding: ActivityAlbumBinding
     lateinit var context: Context
     lateinit var myPreference: MyPreference
-    //  lateinit var resources : Resources
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //   loadLocate() // call LoadLocate
         binding = ActivityAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -69,30 +67,12 @@ class AlbumActivity : AppCompatActivity(), FavoriteFragmentCommunicator {
             }
             true
         }
-
-        /*
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.settings -> {
-                    supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.nav_host_fragment, settingsFragment)
-                        commit()
-                    }
-                    true
-                }
-                else -> false
-            }
-        }
-        */
-
     }
 
     private fun setLocate(Lang: String) {
 
         val locale = Locale(Lang)
-
         Locale.setDefault(locale)
-
         val config = Configuration()
 
         config.locale = locale

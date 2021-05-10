@@ -1,7 +1,6 @@
 package com.example.sofascorehw.model.db
 
 import androidx.room.*
-import com.example.sofascorehw.model.shared.FavoriteOrder
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
 import java.text.FieldPosition
@@ -45,12 +44,6 @@ interface WeathersDao {
 
     @Query("DELETE FROM favoriteweather")
     suspend fun deleteAllFavoriteWeather()
-
-    @Query("SELECT * FROM favoriteorder")
-    suspend fun getAllFavoriteOrder(): List<FavoriteOrder>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertFavoriteOrder(order: FavoriteOrder)
 
     @Update
     suspend fun updateFavoriteOrder(weather: FavoriteWeather)

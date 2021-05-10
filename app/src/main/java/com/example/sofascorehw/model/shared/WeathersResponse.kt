@@ -31,10 +31,3 @@ data class FavoriteWeather(
     val latt_long: String,
     var order: Int
 ) : Serializable
-
-@Entity
-data class FavoriteOrder(
-    @PrimaryKey
-    val woeid: Int,
-    val position: Int
-) : Serializable

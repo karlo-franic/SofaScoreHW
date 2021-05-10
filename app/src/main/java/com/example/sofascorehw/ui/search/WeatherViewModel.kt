@@ -16,23 +16,12 @@ import kotlinx.coroutines.launch
 
 class WeatherViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
     val weatherList = MutableLiveData<ArrayList<WeathersResponse>>()
-    val weatherFavoriteList = MutableLiveData<ArrayList<FavoriteWeather>>()
     val weatherSearchList = MutableLiveData<ArrayList<WeathersResponse>>()
-
     val specificWeatherSearchList = MutableLiveData<ArrayList<SpecificWeather>>()
-    val specificWeatherFavoriteList = MutableLiveData<ArrayList<SpecificWeather>>()
-
     val weatherRecentWrapperList = MutableLiveData<WeatherRecentWrapper>()
-
     val weatherOne = MutableLiveData<SpecificWeather>()
 
-    init {
-
-    }
 
     fun getSearchedWeathers(title: String) {
         viewModelScope.launch {
@@ -54,19 +43,11 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-    fun getInitWeathers(): MutableLiveData<ArrayList<WeathersResponse>> {
-        return weatherList
-    }
-
     fun getSpecificWeather(id: Int) {
         viewModelScope.launch {
             val weathersResponse = Network().getService().getSpecificWeather(id)
             weatherOne.value = weathersResponse
         }
-    }
-
-    fun getInitSpecificWeather(): MutableLiveData<SpecificWeather> {
-        return weatherOne
     }
 
     // RECENT - INSERT
@@ -102,27 +83,11 @@ class WeatherViewModel : ViewModel() {
         }
     }
 
-    // FAVORITE - SELECT ALL
-    fun getFavoriteWeatherFromDb(context: Context) {
-        viewModelScope.launch {
-            val db = WeatherDatabase.getDatabase(context)
-            weatherFavoriteList.value = db?.weathersDao()?.getAllFavoriteWeathers() as ArrayList<FavoriteWeather>
-        }
-    }
-
     // RECENT - DELETE
     fun deleteRecentWeatherFromDb(context: Context, weather: WeathersResponse) {
         viewModelScope.launch {
             val db = WeatherDatabase.getDatabase(context)
             db?.weathersDao()?.deleteRecentWeather(weather)
-        }
-    }
-
-    // FAVORITE - DELETE
-    fun deleteFavoriteWeatherFromDb(context: Context, weather: FavoriteWeather) {
-        viewModelScope.launch {
-            val db = WeatherDatabase.getDatabase(context)
-            db?.weathersDao()?.deleteFavoriteWeather(weather)
         }
     }
 
@@ -140,16 +105,5 @@ class WeatherViewModel : ViewModel() {
             val db = WeatherDatabase.getDatabase(context)
             db?.weathersDao()?.deleteAllFavoriteWeather()
         }
-    }
-
-    // RECENT - COUNT()
-    fun sizeOfRecentFromDb(context: Context): Int {
-        var size: Int = 0
-        val v = viewModelScope.launch {
-            val db = WeatherDatabase.getDatabase(context)
-            size = db?.weathersDao()?.sizeRecentWeather()!!
-        }
-
-        return size
     }
 }

@@ -77,7 +77,8 @@ class WeatherRecycleAdapter(
         holder.binding.cityTitle.text = "${weather.title}"
         holder.binding.coordinateTextview.text = "${north_toString}"
         holder.binding.distanceTextview.text = "Distance: 8542 km"
-        holder.binding.weatherTemp.text = "${specificWeather.consolidatedWeather[0].theTemp.toInt()}°"
+        holder.binding.weatherTemp.text =
+            "${specificWeather.consolidatedWeather[0].theTemp.toInt()}°"
         holder.binding.favoriteImage.setImageResource(R.drawable.ic_star_0)
 
         when (specificWeather.consolidatedWeather[0].weatherStateAbbr) {
@@ -95,7 +96,7 @@ class WeatherRecycleAdapter(
                 holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
             }
         }
-      //  holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
+        //  holder.binding.weatherIcon.setImageResource(R.drawable.ic_lc)
 
 
         holder.itemView.setOnClickListener {

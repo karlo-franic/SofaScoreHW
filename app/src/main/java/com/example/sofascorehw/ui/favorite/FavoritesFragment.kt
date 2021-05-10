@@ -27,7 +27,7 @@ class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListen
 
     private val weatherFavoriteViewModel: WeatherFavoriteViewModel by activityViewModels()
     private lateinit var binding: FragmentFavoritesBinding
-    var adapter : WeatherFavoriteRecycleAdapter? = null
+    var adapter: WeatherFavoriteRecycleAdapter? = null
     private lateinit var communicator: FavoriteFragmentCommunicator
 
     override fun onCreateView(
@@ -48,35 +48,6 @@ class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListen
         })
 
         weatherFavoriteViewModel.getFavoriteWeatherFromDb(requireContext())
-
-        /*
-        val itemTouchHelperCallback =ItemTouchHelper (
-            object :
-                ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
-                override fun onMove(
-                    recyclerView: RecyclerView,
-                    viewHolder: RecyclerView.ViewHolder,
-                    target: RecyclerView.ViewHolder
-                ): Boolean {
-
-                    var position_viewHolder = viewHolder.adapterPosition
-                    var position_target = target.adapterPosition
-
-                    Collections.swap(weatherFavoriteViewModel.weatherFavoriteList.value, position_viewHolder, position_target)
-                    adapter?.notifyItemMoved(position_viewHolder, position_target)
-
-                    return false
-                }
-
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-                }
-
-            })
-
-        itemTouchHelperCallback.attachToRecyclerView(binding.favoriteList)
-
-         */
 
         binding.reorderBtn.setOnClickListener {
             communicator.toReorder()

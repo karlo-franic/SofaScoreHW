@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.sofascorehw.R
 import com.example.sofascorehw.databinding.ActivityAboutBinding
 
-class AboutActivity: AppCompatActivity() {
+class AboutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAboutBinding
 

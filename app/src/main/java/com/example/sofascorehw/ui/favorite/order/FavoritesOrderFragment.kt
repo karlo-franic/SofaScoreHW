@@ -28,7 +28,7 @@ class FavoritesOrderFragment : Fragment(), OnCityClickListener, OnFavoriteClickL
 
     private val weatherFavoriteViewModel: WeatherFavoriteViewModel by activityViewModels()
     private lateinit var binding: FragmentFavoritesReorderBinding
-    var adapter : ReorderFavoriteRecycleAdapter? = null
+    var adapter: ReorderFavoriteRecycleAdapter? = null
     private lateinit var communicator: FavoriteFragmentCommunicator
 
     override fun onCreateView(
@@ -50,7 +50,7 @@ class FavoritesOrderFragment : Fragment(), OnCityClickListener, OnFavoriteClickL
 
         weatherFavoriteViewModel.getFavoriteWeatherFromDb(requireContext())
 
-        val itemTouchHelperCallback =ItemTouchHelper (
+        val itemTouchHelperCallback = ItemTouchHelper(
             object :
                 ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
                 override fun onMove(
@@ -62,7 +62,11 @@ class FavoritesOrderFragment : Fragment(), OnCityClickListener, OnFavoriteClickL
                     var position_viewHolder = viewHolder.adapterPosition
                     var position_target = target.adapterPosition
 
-                    Collections.swap(weatherFavoriteViewModel.weatherFavoriteList.value, position_viewHolder, position_target)
+                    Collections.swap(
+                        weatherFavoriteViewModel.weatherFavoriteList.value,
+                        position_viewHolder,
+                        position_target
+                    )
                     adapter?.notifyItemMoved(position_viewHolder, position_target)
 
                     return false
@@ -76,17 +80,18 @@ class FavoritesOrderFragment : Fragment(), OnCityClickListener, OnFavoriteClickL
 
         itemTouchHelperCallback.attachToRecyclerView(binding.favoriteList)
 
-        val order_Cities = mutableListOf<FavoriteWeather>()
-        var order_position : Int = 1
+        var order_position: Int = 1
 
         binding.reorderBtn.setOnClickListener {
-            weatherFavoriteViewModel.weatherFavoriteList.observe(viewLifecycleOwner, Observer { cities ->
-                cities.forEach { city ->
-                    city.order = order_position
-                    weatherFavoriteViewModel.updateFavoriteWeatherFromDb(requireContext(), city)
-                    order_position += 1
-                }
-            })
+            weatherFavoriteViewModel.weatherFavoriteList.observe(
+                viewLifecycleOwner,
+                Observer { cities ->
+                    cities.forEach { city ->
+                        city.order = order_position
+                        weatherFavoriteViewModel.updateFavoriteWeatherFromDb(requireContext(), city)
+                        order_position += 1
+                    }
+                })
 
             communicator.toFavorite()
         }
