@@ -1,3 +1,3 @@
 # SofaScore Homework
 
-Android application with an interactive button.
+Weather forecast app using data from the https://www.metaweather.com/ API.
