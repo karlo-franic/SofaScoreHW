@@ -25,6 +25,7 @@ import com.example.sofascorehw.databinding.FragmentSearchBinding
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
 import android.widget.AutoCompleteTextView
+import java.time.LocalDateTime
 
 class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListener {
 
@@ -106,6 +107,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
             var weatherOne: WeathersResponse = all_Cities[position]
             weatherOne.id = all_Cities[position].woeid
+            weatherOne.date = LocalDateTime.now().toString()
 
             weatherViewModel.saveRecentWeatherToDb(requireContext(), weatherOne)
 
@@ -159,7 +161,8 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
             all_Cities[position].title,
             all_Cities[position].location_type,
             all_Cities[position].woeid,
-            all_Cities[position].latt_long
+            all_Cities[position].latt_long,
+            1
         )
 
         weatherViewModel.saveFavoriteWeatherToDb(requireContext(), weatherOne)

@@ -11,11 +11,12 @@ import com.example.sofascorehw.databinding.ActivityAlbumBinding
 import com.example.sofascorehw.language.MyContextWrapper
 import com.example.sofascorehw.language.MyPreference
 import com.example.sofascorehw.ui.favorite.FavoritesFragment
+import com.example.sofascorehw.ui.favorite.order.FavoritesOrderFragment
 import com.example.sofascorehw.ui.search.WeathersFragment
 import com.example.sofascorehw.ui.settings.SettingsFragment
 import java.util.*
 
-class AlbumActivity : AppCompatActivity() {
+class AlbumActivity : AppCompatActivity(), FavoriteFragmentCommunicator {
 
     private lateinit var binding: ActivityAlbumBinding
     lateinit var context: Context
@@ -115,6 +116,24 @@ class AlbumActivity : AppCompatActivity() {
         myPreference = MyPreference(newBase!!)
         val lang = myPreference.getLoginCount()
         super.attachBaseContext(MyContextWrapper.wrap(newBase, lang))
+    }
+
+    override fun toReorder() {
+        val favoritesOrderFragment = FavoritesOrderFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, favoritesOrderFragment)
+            commit()
+        }
+    }
+
+    override fun toFavorite() {
+        val favoritesFragment1 = FavoritesFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, favoritesFragment1)
+            commit()
+        }
     }
 
 /*

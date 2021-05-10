@@ -17,15 +17,18 @@ import com.example.sofascorehw.R
 import com.example.sofascorehw.adapter.WeatherFavoriteRecycleAdapter
 import com.example.sofascorehw.databinding.FragmentFavoritesBinding
 import com.example.sofascorehw.databinding.FragmentSettingsBinding
+import com.example.sofascorehw.language.MyPreference
 import com.example.sofascorehw.ui.about.AboutActivity
 import com.example.sofascorehw.ui.favorite.WeatherFavoriteViewModel
 import com.example.sofascorehw.ui.search.WeatherViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
 class SettingsFragment : Fragment() {
 
     private val weatherViewModel: WeatherViewModel by activityViewModels()
     private lateinit var binding: FragmentSettingsBinding
+    lateinit var myPreference: MyPreference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,13 +38,20 @@ class SettingsFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_settings, container, false)
         binding = FragmentSettingsBinding.bind(view)
         val root = binding.root
-
+        myPreference = MyPreference(requireContext())
+    //    myPreference.setLoginCount(myPreference.getLoginCount())
 
         val itemsLang = listOf("English", "Hrvatski")
         val adapterLang = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsLang)
         binding.autocompleteLang.setAdapter(adapterLang)
-        binding.autocompleteLang.setText("English", false)
+        if (myPreference.getLoginCount() == "en") {
+            binding.autocompleteLang.setText("English", false)
+        } else {
+            binding.autocompleteLang.setText("Hrvatski", false)
+        }
 
+   //     var x: String = myPreference.getLoginCount()
+   //     var c = 0
         val itemsCity = listOf("Zagreb", "London", "New York", "Tokyo")
         val adapterCity = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, itemsCity)
         binding.autocompleteCity.setAdapter(adapterCity)
@@ -64,6 +74,7 @@ class SettingsFragment : Fragment() {
 
                     val intent = Intent(this.context, AlbumActivity::class.java)
                     startActivity(intent)
+                    activity?.finish()
                 }
                 .show()
         }
@@ -80,8 +91,21 @@ class SettingsFragment : Fragment() {
 
                     val intent = Intent(this.context, AlbumActivity::class.java)
                     startActivity(intent)
+                    activity?.finish()
                 }
                 .show()
+        }
+
+        binding.autocompleteLang.setOnItemClickListener { parent, view, position, id ->
+            if (position == 0) {
+                myPreference.setLoginCount("en")
+            }
+            if (position == 1) {
+                myPreference.setLoginCount("hr")
+            }
+            val intent = Intent(this.context, AlbumActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
         }
 
         return root

@@ -6,6 +6,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
 import java.text.FieldPosition
+import java.time.LocalDateTime
 
 @Entity
 data class WeathersResponse(
@@ -15,7 +16,8 @@ data class WeathersResponse(
     val title: String,
     val location_type: String,
     val woeid: Int,
-    val latt_long: String
+    val latt_long: String,
+    var date: String
 ) : Serializable
 
 @Entity
@@ -26,7 +28,8 @@ data class FavoriteWeather(
     val title: String,
     val location_type: String,
     val woeid: Int,
-    val latt_long: String
+    val latt_long: String,
+    var order: Int
 ) : Serializable
 
 @Entity

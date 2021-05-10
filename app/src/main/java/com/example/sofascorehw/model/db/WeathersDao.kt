@@ -4,11 +4,12 @@ import androidx.room.*
 import com.example.sofascorehw.model.shared.FavoriteOrder
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
+import java.text.FieldPosition
 
 @Dao
 interface WeathersDao {
 
-    @Query("SELECT * FROM weathersresponse")
+    @Query("SELECT * FROM weathersresponse ORDER BY date DESC")
     suspend fun getAllWeathers(): List<WeathersResponse>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -27,7 +28,7 @@ interface WeathersDao {
     @Query("SELECT COUNT(*) FROM favoriteweather")
     suspend fun sizeFavoriteWeather(): Int
 
-    @Query("SELECT * FROM favoriteweather")
+    @Query("SELECT * FROM favoriteweather ORDER BY `order`")
     suspend fun getAllFavoriteWeathers(): List<FavoriteWeather>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -50,5 +51,8 @@ interface WeathersDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertFavoriteOrder(order: FavoriteOrder)
+
+    @Update
+    suspend fun updateFavoriteOrder(weather: FavoriteWeather)
 
 }

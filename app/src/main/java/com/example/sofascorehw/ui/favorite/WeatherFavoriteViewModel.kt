@@ -133,4 +133,12 @@ class WeatherFavoriteViewModel : ViewModel() {
         }
         return size
     }
+
+    // FAVORITE - UPDATE
+    fun updateFavoriteWeatherFromDb(context: Context, weather: FavoriteWeather) {
+        viewModelScope.launch {
+            val db = WeatherDatabase.getDatabase(context)
+            db?.weathersDao()?.updateFavoriteOrder(weather)
+        }
+    }
 }

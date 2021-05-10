@@ -1,4 +1,4 @@
-package com.example.sofascorehw.ui.favorite
+package com.example.sofascorehw.ui.favorite.order
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,28 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sofascorehw.*
+import com.example.sofascorehw.adapter.ReorderFavoriteRecycleAdapter
 import com.example.sofascorehw.adapter.WeatherFavoriteRecycleAdapter
 import com.example.sofascorehw.adapter.WeatherRecycleAdapter
 import com.example.sofascorehw.databinding.FragmentFavoritesBinding
+import com.example.sofascorehw.databinding.FragmentFavoritesReorderBinding
 import com.example.sofascorehw.model.shared.FavoriteWeather
 import com.example.sofascorehw.model.shared.WeathersResponse
-import com.example.sofascorehw.ui.favorite.order.FavoritesOrderFragment
+import com.example.sofascorehw.ui.favorite.WeatherFavoriteViewModel
 import com.example.sofascorehw.ui.search.WeatherViewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
-class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListener {
+class FavoritesOrderFragment : Fragment(), OnCityClickListener, OnFavoriteClickListener {
 
     private val weatherFavoriteViewModel: WeatherFavoriteViewModel by activityViewModels()
-    private lateinit var binding: FragmentFavoritesBinding
-    var adapter : WeatherFavoriteRecycleAdapter? = null
+    private lateinit var binding: FragmentFavoritesReorderBinding
+    var adapter : ReorderFavoriteRecycleAdapter? = null
     private lateinit var communicator: FavoriteFragmentCommunicator
 
     override fun onCreateView(
@@ -35,21 +36,20 @@ class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListen
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_favorites, container, false)
-        binding = FragmentFavoritesBinding.bind(view)
+        val view: View = inflater.inflate(R.layout.fragment_favorites_reorder, container, false)
+        binding = FragmentFavoritesReorderBinding.bind(view)
         val root = binding.root
         communicator = activity as FavoriteFragmentCommunicator
 
         binding.favoriteList.layoutManager = LinearLayoutManager(context)
         weatherFavoriteViewModel.getFavoriteWeatherFromDb(requireContext())
         weatherFavoriteViewModel.weatherFavoriteWrapperList.observe(viewLifecycleOwner, Observer {
-            adapter = WeatherFavoriteRecycleAdapter(requireContext(), it, this, this)
+            adapter = ReorderFavoriteRecycleAdapter(requireContext(), it, this, this)
             binding.favoriteList.adapter = adapter
         })
 
         weatherFavoriteViewModel.getFavoriteWeatherFromDb(requireContext())
 
-        /*
         val itemTouchHelperCallback =ItemTouchHelper (
             object :
                 ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
@@ -76,10 +76,19 @@ class FavoritesFragment : Fragment(), OnCityClickListener, OnFavoriteClickListen
 
         itemTouchHelperCallback.attachToRecyclerView(binding.favoriteList)
 
-         */
+        val order_Cities = mutableListOf<FavoriteWeather>()
+        var order_position : Int = 1
 
         binding.reorderBtn.setOnClickListener {
-            communicator.toReorder()
+            weatherFavoriteViewModel.weatherFavoriteList.observe(viewLifecycleOwner, Observer { cities ->
+                cities.forEach { city ->
+                    city.order = order_position
+                    weatherFavoriteViewModel.updateFavoriteWeatherFromDb(requireContext(), city)
+                    order_position += 1
+                }
+            })
+
+            communicator.toFavorite()
         }
 
         return root

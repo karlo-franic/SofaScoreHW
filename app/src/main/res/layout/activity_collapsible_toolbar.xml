@@ -549,7 +549,7 @@
                         android:id="@+id/next_days_linearlayout"
                         android:layout_width="wrap_content"
                         android:layout_height="112dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="0dp"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
