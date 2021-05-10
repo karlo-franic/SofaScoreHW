@@ -94,9 +94,11 @@ class WeatherViewModel : ViewModel() {
             val asyncTasks = recentResult.map { weather ->
                 async { Network().getService().getSpecificWeather(weather.woeid) }
             }
-            val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
-            specificWeatherSearchList.value = responseList as ArrayList<SpecificWeather>
-            weatherRecentWrapperList.value = WeatherRecentWrapper(recentResult, responseList)
+            if (!asyncTasks.awaitAll().isEmpty()) {
+                val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
+                specificWeatherSearchList.value = responseList as ArrayList<SpecificWeather>
+                weatherRecentWrapperList.value = WeatherRecentWrapper(recentResult, responseList)
+            }
         }
     }
 

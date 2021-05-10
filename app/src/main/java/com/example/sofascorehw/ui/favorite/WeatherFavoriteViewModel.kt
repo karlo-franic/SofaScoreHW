@@ -98,9 +98,11 @@ class WeatherFavoriteViewModel : ViewModel() {
             val asyncTasks = favoriteResult.map { weather ->
                 async { Network().getService().getSpecificWeather(weather.woeid) }
             }
-            val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
-            specificWeatherFavoriteList.value = responseList as ArrayList<SpecificWeather>
-            weatherFavoriteWrapperList.value = WeatherFavoriteWrapper(favoriteResult, responseList)
+            if (!asyncTasks.awaitAll().isEmpty()) {
+                 val responseList = asyncTasks.awaitAll() as ArrayList<SpecificWeather>
+                specificWeatherFavoriteList.value = responseList as ArrayList<SpecificWeather>
+                weatherFavoriteWrapperList.value = WeatherFavoriteWrapper(favoriteResult, responseList)
+            }
         }
     }
 

@@ -39,4 +39,43 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- City UI -->
+    <string name="min_max">Min / Max</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="visibility">Visibility</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="next_days">Next 5 days</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="type_of_unit">Choose type of unit</string>
+    <string name="metric">Metric</string>
+    <string name="imperial">Imperial</string>
+    <string name="about_title">About</string>
+    <string name="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="about_btn">More Info</string>
+    <string name="btn_clear_fav">Clear my Cities List</string>
+    <string name="btn_clear_rec">Clear Recent Search List</string>
+
+    <!-- About -->
+    <string name="sofascore_academy">SofaScore Android Academy</string>
+    <string name="class_2021">Class 2021</string>
+    <string name="app_name_lable">App Name</string>
+    <string name="app_name_real">Frenkie\'s WeatherApp</string>
+    <string name="api_credit_label">API Credit</string>
+    <string name="api_credit">metaweather</string>
+    <string name="developer_label">Developer</string>
+    <string name="developer">Karlo Franić</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_fav">Clear favorite list?</string>
+    <string name="dialog_title_rec">Clear recent search list?</string>
+    <string name="dialog_text_fav">If you clear your favorite list, your favorite screen will be empty.</string>
+    <string name="dialog_text_rec">If you clear your recent search list, your home screen will be empty.</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear</string>
 </resources>

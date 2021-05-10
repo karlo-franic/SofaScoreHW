@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SofaScoreHW">
         <activity android:name=".CollapsibleToolbarActivity"></activity>
+        <activity android:name=".ui.about.AboutActivity"></activity>
         <activity android:name=".AlbumActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

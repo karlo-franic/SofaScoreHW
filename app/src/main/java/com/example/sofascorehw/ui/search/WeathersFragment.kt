@@ -64,7 +64,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
         })
 
 
-        binding.searchEditText.threshold = 3
+        binding.searchEditText.threshold = 2
         var query = ""
 
         binding.searchEditText.addTextChangedListener(object : TextWatcher {
@@ -77,7 +77,7 @@ class WeathersFragment : Fragment(), OnCityClickListener, OnFavoriteClickListene
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 query = s.toString()
-                if (s?.length!! > 2) {
+                if (s?.length!! > 1) {
                     weatherViewModel.getSearchedWeathers(query)
 
                     var titleList : MutableList<String> = ArrayList()

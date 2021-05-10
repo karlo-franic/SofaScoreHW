@@ -39,4 +39,43 @@
     <string name="attachment_title">Skini dolazeće privitke</string>
     <string name="attachment_summary_on">Automatski skini privitke za dolazeće emailove</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- City UI -->
+    <string name="min_max">Min / Max</string>
+    <string name="wind">Vjetar</string>
+    <string name="humidity">Vlažnost zraka</string>
+    <string name="pressure">Tlak zraka</string>
+    <string name="visibility">Vidljivost</string>
+    <string name="accuracy">Točnost</string>
+    <string name="next_days">Narednih 5 dana</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Postavke</string>
+    <string name="type_of_unit">Odaberite vrstu jedinice:</string>
+    <string name="metric">Metrički</string>
+    <string name="imperial">Imperijalni</string>
+    <string name="about_title">O nama</string>
+    <string name="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="about_btn">Više Info</string>
+    <string name="btn_clear_fav">Obriši Moje Gradove</string>
+    <string name="btn_clear_rec">Obriši Pretraživanje Gradova</string>
+
+    <!-- About -->
+    <string name="sofascore_academy">SofaScore Android Academy</string>
+    <string name="class_2021">Class 2021</string>
+    <string name="app_name_lable">Ime Aplikacije</string>
+    <string name="app_name_real">Frenkie\'s WeatherApp</string>
+    <string name="api_credit_label">API Zasluga</string>
+    <string name="api_credit">metaweather</string>
+    <string name="developer_label">Developer</string>
+    <string name="developer">Karlo Franić</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_fav">Obriši listu favorita?</string>
+    <string name="dialog_title_rec">Obriši listu pretraživanih gradova?</string>
+    <string name="dialog_text_fav">Ako obrišete listu favorita, lista favorita biti će prazna.</string>
+    <string name="dialog_text_rec">Ako obrišete listu pretraživanja, lista pretraživanja biti će prazna.</string>
+    <string name="cancel">Odustani</string>
+    <string name="clear">Obriši</string>
 </resources>
