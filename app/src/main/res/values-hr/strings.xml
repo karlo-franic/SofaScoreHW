@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SofaScoreHW</string>
+    <string name="button_add">Dodaj</string>
+    <string name="button_list">Lista</string>
+    <string name="fragment_album">Ime albuma: </string>
+    <string name="fragment_band">Ime benda: </string>
+    <string name="fragment_genre">Žanr: </string>
+    <string name="fragment_single">Single: </string>
+    <string name="fragment_count">Broj pjesama: </string>
+    <string name="fragment_type">Tip: </string>
+    <string name="radio_ep">EP </string>
+    <string name="radio_lp">LP </string>
+    <string name="fragment_country">Država: </string>
+    <string name="fragment_city">Grad: </string>
+    <string name="fragment_sold">Prodano primjeraka: </string>
+    <string name="fragment_img">URL Slike: </string>
+    <string name="fragment_year">Godina: </string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_add">Dodaj</string>
+    <string name="title_albums">Albumi</string>
+    <string name="title_activity_album">AlbumActivity</string>
+    <string name="settings">Postavke</string>
+    <string name="page_title">SofaScoreHW</string>
+    <string name="title_search">Pretraži</string>
+    <string name="title_favorite">Favoriti</string>
+    <string name="title_settings">Postavke</string>
+    <string name="favorite_header">Moji Gradovi</string>
+    <!-- Preference Titles -->
+    <string name="languages_header">Jezik</string>
+    <string name="sync_header">Sinkronizacija</string>
+
+    <!-- Languages Preferences -->
+    <string name="signature_title">Tvoj potpis</string>
+    <string name="reply_title">Jezik</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sinkroniziraj email periodično</string>
+    <string name="attachment_title">Skini dolazeće privitke</string>
+    <string name="attachment_summary_on">Automatski skini privitke za dolazeće emailove</string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!-- City UI -->
+    <string name="min_max">Min / Max</string>
+    <string name="wind">Vjetar</string>
+    <string name="humidity">Vlažnost zraka</string>
+    <string name="pressure">Tlak zraka</string>
+    <string name="visibility">Vidljivost</string>
+    <string name="accuracy">Točnost</string>
+    <string name="next_days">Narednih 5 dana</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Postavke</string>
+    <string name="type_of_unit">Odaberite vrstu jedinice:</string>
+    <string name="metric">Metrički</string>
+    <string name="imperial">Imperijalni</string>
+    <string name="about_title">O nama</string>
+    <string name="about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="about_btn">Više Info</string>
+    <string name="btn_clear_fav">Obriši Moje Gradove</string>
+    <string name="btn_clear_rec">Obriši Pretraživanje Gradova</string>
+
+    <!-- About -->
+    <string name="sofascore_academy">SofaScore Android Academy</string>
+    <string name="class_2021">Class 2021</string>
+    <string name="app_name_lable">Ime Aplikacije</string>
+    <string name="app_name_real">Frenkie\'s WeatherApp</string>
+    <string name="api_credit_label">API Zasluga</string>
+    <string name="api_credit">metaweather</string>
+    <string name="developer_label">Developer</string>
+    <string name="developer">Karlo Franić</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title_fav">Obriši listu favorita?</string>
+    <string name="dialog_title_rec">Obriši listu pretraživanih gradova?</string>
+    <string name="dialog_text_fav">Ako obrišete listu favorita, lista favorita biti će prazna.</string>
+    <string name="dialog_text_rec">Ako obrišete listu pretraživanja, lista pretraživanja biti će prazna.</string>
+    <string name="cancel">Odustani</string>
+    <string name="clear">Obriši</string>
+</resources>
